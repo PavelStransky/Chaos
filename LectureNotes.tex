@@ -1,0 +1,119 @@
+\documentclass[a4paper,11pt,twoside]{article}
+\usepackage[utf8]{inputenc}	%% Text coding
+\usepackage[czech]{babel}
+\usepackage{epsfig,subfigure}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage[unicode]{hyperref}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{xifthen}
+\usepackage{amsthm,thmtools}
+\usepackage{bold-extra}
+
+\hypersetup{
+	pdftitle={Classical and Quantum Chaos},
+	pdfauthor={Pavel Stránský},
+	pdffitwindow=true,
+	colorlinks=true,
+	urlcolor=cyan,            %barva textu pri tisku
+	linkcolor=red,
+	citecolor=green,
+	filecolor=magenta
+}
+
+% Velikost stránky
+\addtolength{\topmargin}{-1.5cm} %\addtolength{\textheight}{-10cm}
+\addtolength{\textwidth}{4cm} \addtolength{\textheight}{4cm} % Šířka a výška textu
+\addtolength{\voffset}{-0.5cm} % Horní okraj
+\addtolength{\hoffset}{-2cm}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+
+\DeclareMathOperator{\e}{e}
+
+\def\vector#1{\boldsymbol{#1}}								% Vector
+\renewcommand{\d}{\mathrm{d}}
+\newcommand{\derivative}[3][]{\ifthenelse{\isempty{#1}}	    % Normal derivative
+	{\frac{\d{#2}}{\d{#3}}}
+	{\frac{\d^{#1}{#2}}{\d{#3}^{#1}}}
+}
+\def\makematrix#1{\begin{pmatrix}#1\end{pmatrix}}       % Matrix
+
+\def\code#1{\textnormal{\texttt{#1}}}
+\def\file#1{\textnormal{\textbf{\texttt{#1}}}}
+
+\newtheoremstyle{spaced}
+{5pt}{5pt}{\itshape}{}{\bfseries}{:}{.5em}{}
+
+\newtheoremstyle{red}
+{5pt}{5pt}{\itshape\color{red}}{}{\bfseries\color{red}}{:}{.5em}{}
+
+\newtheoremstyle{blue}
+{5pt}{5pt}{\itshape\color{blue}}{}{\bfseries\color{blue}}{:}{.5em}{}
+
+\begin{document}
+\theoremstyle{spaced}
+\newtheorem{example}{Příklad}[section]
+
+\theoremstyle{red}
+\newtheorem{task}{Úkol}[section]
+
+\theoremstyle{blue}
+\newtheorem{solution}{Řešení}[section]
+
+\title{Lecture Notes on Quantum Chaos}
+\date{\today}
+\author{Pavel Stránský}
+
+\maketitle
+
+\section{Literature}
+\begin{itemize}
+    \item \cite{Gut90}~Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990)
+        \begin{itemize}
+            \item Classical monography about chaos in physics.
+            \item Profound physical and mathematical discussion.
+            \item Sometimes nonstandard notation.
+        \end{itemize}
+
+    \item \cite{Haa10}~Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010)
+        \begin{itemize}
+            \item Up-to-date topics, including chaotic dissipative systems and supersymmetric approaches.
+        \end{itemize}
+
+    \item \cite{Boh89}~Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989
+        \begin{itemize}
+            \item Brief and conscise notes on the basics of quantum chaos.
+        \end{itemize}
+
+    \item \cite{Meh04}~Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
+        \begin{itemize}
+            \item Everything you always wanted to know about random matrices (and quantum chaos is from a big part about random matrices).
+            \item \dots~and probably even didn't want to know.
+            \item If you love formulae, you'll be happy happy reading this book.
+        \end{itemize}
+
+    \end{itemize}
+
+\section{A way to quantum chaos}
+    \subsection{Quantum mechanics is linear}
+        Classical chaos is tightly connected with the nonlinearity of classical equations of motion.
+        Quantum mechanics is linear, quantum evolution unitary$\longrightarrow$no sensitive dependence on ``initial conditions''.
+
+
+        
+
+\begin{thebibliography}{99}
+    \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
+    \bibitem{Haa10} Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010).
+    \bibitem{Boh89} Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989.
+    \bibitem{Meh04} Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
+
+    \bibitem{Rei04} Linda E. Reichl, {\it The Transition to Chaos: Conservative Classical Systems and Quantum Manifestations} (Springer, 2004).
+    \bibitem{Sto99} Hans-Jürgen Stöckmann, {\it Quantum Chaos: An Introduction} (Cambridge University Press, 1999).
+    \bibitem{Ozo88} Alfredo M. Ozorio de Almeida, {\it Hamiltonian Systems: Chaos and Quantization} (Cambridge University Press, 1988).
+\end{thebibliography}
+
+\end{document}
