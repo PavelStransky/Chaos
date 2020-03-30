@@ -30,39 +30,9 @@
 \setlength{\headheight}{15pt}
 
 \pagestyle{fancy}
-
-\DeclareMathOperator{\e}{e}
-
-\def\vector#1{\boldsymbol{#1}}								% Vector
-\renewcommand{\d}{\mathrm{d}}
-\newcommand{\derivative}[3][]{\ifthenelse{\isempty{#1}}	    % Normal derivative
-	{\frac{\d{#2}}{\d{#3}}}
-	{\frac{\d^{#1}{#2}}{\d{#3}^{#1}}}
-}
-\def\makematrix#1{\begin{pmatrix}#1\end{pmatrix}}       % Matrix
-
-\def\code#1{\textnormal{\texttt{#1}}}
-\def\file#1{\textnormal{\textbf{\texttt{#1}}}}
-
-\newtheoremstyle{spaced}
-{5pt}{5pt}{\itshape}{}{\bfseries}{:}{.5em}{}
-
-\newtheoremstyle{red}
-{5pt}{5pt}{\itshape\color{red}}{}{\bfseries\color{red}}{:}{.5em}{}
-
-\newtheoremstyle{blue}
-{5pt}{5pt}{\itshape\color{blue}}{}{\bfseries\color{blue}}{:}{.5em}{}
+\input{defs}
 
 \begin{document}
-\theoremstyle{spaced}
-\newtheorem{example}{Příklad}[section]
-
-\theoremstyle{red}
-\newtheorem{task}{Úkol}[section]
-
-\theoremstyle{blue}
-\newtheorem{solution}{Řešení}[section]
-
 \title{Lecture Notes on Quantum Chaos}
 \date{\today}
 \author{Pavel Stránský}
@@ -101,9 +71,6 @@
     \subsection{Quantum mechanics is linear}
         Classical chaos is tightly connected with the nonlinearity of classical equations of motion.
         Quantum mechanics is linear, quantum evolution unitary$\longrightarrow$no sensitive dependence on ``initial conditions''.
-
-
-        
 
 \begin{thebibliography}{99}
     \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
