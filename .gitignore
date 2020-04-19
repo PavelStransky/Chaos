@@ -274,3 +274,7 @@ TSWLatexianTemp*
 
 # Makeindex log files
 *.lpz
+
+# Pavel Stránský
+__pycache__/*
+sources/*
