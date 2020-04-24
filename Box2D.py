@@ -14,11 +14,15 @@ class Parameters:
         this.hbar = hbar
         this.M = M
 
+    def V(this):
+        return this.a * this.b
+
     def __str__(this):
         return f"(a, b) = ({this.a}, {this.b})"
 
+
 def LevelDensity(parameters, E=0):
-    return parameters.a * parameters.b * parameters.M / (np.pi * parameters.hbar**2) * E**0
+    return parameters.V() * parameters.M / (np.pi * parameters.hbar**2) * E**0
 
 
 def CummulativeLevelDensity(parameters, E):
@@ -35,13 +39,19 @@ def CalculateSpectrum(parameters, numStates=100000):
     """
     numStates = int(numStates)
 
+    rho = LevelDensity(parameters)                  # Level density (to estimate maximum energy)
+    maxEnergy = 1.1 * numStates / rho               # 1.5 is a Pišvejc (Bulgarian) constant 
+                                                    # (to be on the safe side and have always slightly more levels than necessary)
     K = (np.pi * parameters.hbar / (2 * parameters.M))**2
 
-    rho = LevelDensity(parameters)                  # Level density (to estimate maximum energy)
-    maxEnergy = 1.5 * numStates / rho               # 1.1 is a Pišvejc (Bulgarian) constant 
-                                                    # (to be on the safe side and have always slightly more levels than necessary)
     def Energy(n, m):
         return K * ((n / parameters.a)**2 + (m / parameters.b)**2)
+
+    p = np.sqrt(2 * parameters.M * maxEnergy) / (np.pi * parameters.hbar)
+    maxn = int(p * parameters.a) + 1
+    maxm = int(p * parameters.b) + 1
+
+    print(f"MaxEnergy = {maxEnergy}, MaxIndices = ({maxn}, {maxm})")
 
     spectrum = []
     for n in range(1, numStates):
@@ -59,8 +69,4 @@ def CalculateSpectrum(parameters, numStates=100000):
     return np.array(spectrum[0:numStates])          # We return just the desired number of states
 
 
-def Unfolding(spectrum):
-    """ Norm the spectrum to get level density 1 
-        (2D box has a constant level density, so the unfolding is a trivial stretching of the original levels)
-    """
-    return (spectrum - spectrum[0]) / (spectrum[-1] - spectrum[0]) * (len(spectrum) - 1)
+

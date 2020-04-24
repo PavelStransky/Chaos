@@ -1,6 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def StretchSpectrum(spectrum):
+    """ Norm the spectrum to get whole average level density 1 
+    """
+    return (spectrum - spectrum[0]) / (spectrum[-1] - spectrum[0]) * (len(spectrum) - 1)
+
+
 def LevelSpacing(spectrum, shift=1):
     """ Calculates the spacing between nearest levels.
     
@@ -24,7 +31,7 @@ def PlotLevelDensity(spectrum, ExactLevelDensity=None, bins=50, extraTitle=""):
         plt.plot(x, ExactLevelDensity(x), label="Smooth part (formula)")
         plt.legend()
 
-    plt.title("Level density " + extraTitle)
+    plt.title("Level Density " + extraTitle)
     plt.xlabel("$E$")
     plt.ylabel(r"$\rho(E)$")
 
@@ -40,7 +47,7 @@ def PlotCummulativeLevelDensity(spectrum, ExactLevelDensity=None, extraTitle="")
         plt.plot(x, ExactLevelDensity(x), label="Smooth part (formula)")
         plt.legend()
 
-    plt.title("Level density " + extraTitle)
+    plt.title("Cummulative Level Density " + extraTitle)
     plt.xlabel("$E$")
     plt.ylabel(r"$\rho(E)$")
 
@@ -57,6 +64,18 @@ def Wigner(s):
     return 0.5 * np.pi * s * np.exp(-0.25 * np.pi * s**2)
 
 
+def PolynomialUnfolding(spectrum, degree):
+    p = np.polynomial.Polynomial.fit(spectrum, range(len(spectrum)), degree)
+
+    plt.plot(spectrum, range(len(spectrum)), label="Data")
+    plt.plot(*p.linspace(), label=f"Polynomial of degree {degree}")
+    plt.title("Polynomial Unfolding")
+    plt.legend()
+    plt.show()
+
+    return p(spectrum)
+
+
 def PlotNNSD(spacings, Theoretical=Wigner, bins=50, extraTitle=""):
     """ Plots a graph of the nearest neigbour spacing distribution (histogram) and theoretical prediciton (if available) """
     plt.hist(spacings, density=True, bins=bins, range=(0,5), rwidth=0.8, label="Numerical NNSD")
@@ -65,7 +84,8 @@ def PlotNNSD(spacings, Theoretical=Wigner, bins=50, extraTitle=""):
     plt.plot(x, Theoretical(x), label=Theoretical.__name__)
     plt.xlabel("$s$")
     plt.ylabel("$p(s)$")
-    plt.title("Level density " + extraTitle)
+    plt.title("Nearest-Neigbour Spacing Distribution " + extraTitle)
     plt.legend()
     plt.ylim(0)
     plt.show()
+
