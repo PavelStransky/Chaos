@@ -25,6 +25,8 @@
 	filecolor=magenta
 }
 
+\graphicspath{{figures/}}
+
 % Velikost stránky
 \addtolength{\topmargin}{-1.5cm} %\addtolength{\textheight}{-10cm}
 \addtolength{\textwidth}{4cm} \addtolength{\textheight}{4cm} % Šířka a výška textu
@@ -276,6 +278,7 @@
             \begin{equation}
                 E_{n_{1},n_{2}}
                 =\frac{\pi^{2}\hbar^{2}}{2M}\left[\left(\frac{n_{1}}{a}\right)^{2}+\left(\frac{n_{2}}{b}\right)^{2}\right],
+                \label{eq:2Dbox}
             \end{equation}
             where $n_{1},n_{2}\in\mathbb{N}$ are two independent quantum numbers and $a,b$ are the dimensions of the box.
             Incommensurate means that their ratio $\alpha=a/b$ is not a rational number.
@@ -739,7 +742,7 @@
         A final remark related to the spectra of random matrices is the average level density.
         It is given by integral
         \begin{equation}
-            \overline{\rho}(E)=\int\d E_{2}\dotsb\d E_{N}P(E,E_{1},\dotsc,E_{N}),
+            \overline{\rho}(E)=\int\d E_{2}\dotsb\d E_{N}P(E,E_{2},\dotsc,E_{N}),
         \end{equation}
         where $P$ is the joint probability density~\eqref{eq:PE}.
         
@@ -812,7 +815,7 @@
         In order to get more precise estimate of the level density, calculate an average over a sample of several random matrices.
     \end{task}
 
-\section{Statistical analysis of a general computed spectrum}
+\section{Statistical analysis of a quantum spectrum}
     In this section it will be assumed that we have spectrum of a general quantum system, and our goal is to prepare the spectrum in such a way that we could use spectral statistics to distinguish whether the levels are correlated or not.
 
     \subsection{Level density}
@@ -939,7 +942,7 @@
             Try to do the unfolding both by means of the exact formula~\eqref{eq:NWell} and by a polynomial fit.
         \end{task}
 
-        \begin{task}
+        \begin{task}\label{task:GOE}
             Use the routine of Task~\ref{task:GOE} and calculate the spectrum of a random matrix.
             Unfold it via the exact formula~\eqref{eq:NSemicircle} and via a polynomial approximation.
             Calculate the NNSD and compare it with the expected Wigner distribution~\eqref{eq:Wigner1}.
@@ -947,8 +950,115 @@
             Try to cut the ``head'' and ``tail'' of the unfolded spectrum and observe changes (improvements) in the resulting NNSD. 
         \end{task}
 
+    \subsection{Brody distribution}
+        Physical systems, especially those with low number of degrees of freedom, usually exhibit mixed-type of dynamics.
+        In the classical physics it means that at given energy $E$ there are islands in the phase space with regular dynamics (zero Lyapunov exponent) surrounded by chaotic sea (positive Lyapunov exponent).
+        Hence we cannot expect purely Poissonian or Gaussian-Ensemble-like level statistics in the quantum mechanics, but some kind of mixture of both.
+
+        It has been conjectured~\cite{Per73} (\emph{Percival conjecture}) that the parts of the quantum spectrum that correspond to the remnants of classical tori (regions with classical stable dynamics) are statistically independent of the parts related with the chaotic classical regions, so that the energy level sequence is a mixture of levels with Wigner and with Poissonian statistics.
+        Mathematically it is described by the \emph{Berry-Robnik distribution}~\cite{Ber84}.
+        However, in practice it is much more common to use the \emph{Brody distribution}~\cite{Bro73}, which is, in fact, an artificial distribution obtained by assuming level repulsion
+        \begin{equation}
+            \mu(s)=s^{\omega}
+        \end{equation}
+        in formula~\eqref{eq:pseq}.
+        It leads to the nearest neighbour level distribution in the form
+        \begin{align}
+            P_{\text{Brody}}(s;\omega)
+                &=N_{\omega}(\omega+1)s^{\omega}\e^{-N_{\omega}s^{\omega+1}}
+            \label{eq:Brody}\\
+            N_{\omega}
+                &=\left[\Gamma\left(\frac{\omega+2}{\omega+1}\right)\right]^{\omega+1},\nonumber
+        \end{align}
+        where $\Gamma$ is the Euler Gamma function and $\omega\in[0,1]$ is a parameter that measures the chaoticity of the system: When $\omega=0$, Brody distribution coincides with Poissonian distribution, whereas for $\omega=1$ it gives Wigner GOE distribution.
+        This parameter is usually fitted from the unfolded NNSD by means of the least-square fit.
+        Brody distribution for various values of parameter $\omega$ is depicted in Figure~\ref{fig:Brody}.
+
+        \begin{figure}[!htbp]
+            \centering\epsfig{file=brody.eps,width=0.6\linewidth}
+            \caption{
+                \protect\small
+                Brody distribution~\eqref{eq:Brody} for various values of parameter $\omega$. 
+            }	
+            \label{fig:Brody}
+        \end{figure}        
+
+        Despite having known conflicts with theoretical predictions for the NNSD behaviour, Brody distribution is highly successful and often gives better estimate of the degree of system's chaoticity than other more firmly founded theoretical distributions.\footnote{
+            Apart from the Berry-Robnik distribution, there is also Izrailev distribution~\cite{Izr89}, Caurier-Grammaticos-Ramani distribution and Lenz-Haake distribution on the market.
+            The last two have been constructed for $2\times2$ matrices only.
+            The main difference between various distribution is in the form of chaotic perturbation they assume.
+        }
+
     \subsection{Long-range correlations}
-    \subsection{$1/f$ noise in quantum spectra}
+        Short-range correlations, such as NNSD, are usually the first choice to study the chaotic properties of a system.
+        They are easy to work with and quite resistant to unsuitably performed unfolding procedure.
+        However, we may need a more sensitive indicator of deviation from the Random Matrix Theory in the spectral statistics, and that is when the long-range correlations come in handy.
+
+        \subsubsection{$\Delta_{3}$ statistics}
+            This is one of the most commonly used long-range statistics.
+            It consists of approximating the unfolded cummulative level density $\overline{N}(e)$ with line segments of length $L$ and taking the average square deviation,
+            \begin{equation}
+                \Delta_{3}(E_{0};L)
+                =\frac{1}{L}\left\langle\min_{a,b}\int_{e_{0}-\frac{L}{2}}^{E_{0}+\frac{L}{2}}\left[\overline{N}(e)-ae-b\right]^{2}\d e\right\rangle,
+            \end{equation}
+            where $\langle\bullet\rangle$ denotes averaging over the ensemble (it is also possible to average over $E_{0}$ if the dynamics depends weakly of the energy).
+            For discrete set of unfolded levels $e_{j}$ there exists a practical formula to calculate $\Delta_{3}$~\cite{Boh75},
+            \begin{align}
+                \Delta_{3}(L)
+                    &=\frac{n^{2}}{16}-\frac{1}{L^{2}}\left[\sum_{j=1}^{n}\tilde{e}_{j}\right]^{2}+\frac{3n}{2L^{2}}\sum_{j=1}^{n}\tilde{e}_{j}^{2}-\frac{3}{L^{4}}\left[\sum_{j=1}^{n}\tilde{e}_{j}^{2}\right]^{2}+\frac{1}{L}\left[\sum_{j=1}^{n}\left(n-2j+1\right)\tilde{e}_{j}\right],\\
+                \tilde{e}_{j}&=e_{j}-E_{0},\nonumber
+            \end{align}
+            where $n\approx L$ is the number of levels within the interval $[E_{0}-L/2,E_{0}+L/2]$.
+            For $L$ large this statistics behave like
+            \begin{equation}
+                \Delta_{3}(L)=\left\{\begin{array}{ll}
+                    \frac{1}{12} & \text{for equidistant spectrum},\\
+                    \frac{L}{15} & \text{for integrable (Poissonian) spectrum},\\
+                    \frac{1}{\pi^{2}\beta}\ln L+c_{\beta}+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
+                \end{array}\right.
+                \label{eq:Delta3}
+            \end{equation}
+            where $\beta$ is the Dyson index and
+            \begin{equation}
+                c_{1}=\ln{2\pi}+\gamma-\frac{\pi^{2}}{8}-\frac{5}{4},
+            \end{equation}
+            $\gamma$ being the Euler-Mascheroni constant.\footnote{
+                \begin{equation}
+                    \gamma
+                        =\lim_{n\rightarrow\infty}\left(-\ln{n}+\sum_{j=1}^{n}\frac{1}{k}\right)
+                        =-\int_{0}^{\infty}\e^{-x}\ln{x}\d x\approx0.577216
+                \end{equation}
+            }
+
+        \subsubsection{$\Sigma^{2}$ statistics}
+            This statistics is also often called \emph{number variance} and it is the variance of number of levels on intervals of length $L$,
+            \begin{equation}
+                \sigma^{2}(E_{0};L)
+                    =\left\langle\left[\#(E_{0};L)-L\right]^{2}\right\rangle
+                    =\left\langle\left[\overline{N}\left(E_{0}+\frac{L}{2}\right)-\overline{N}\left(E_{0}-\frac{L}{2}\right)-L\right]^{2}\right\rangle,
+                \label{eq:Sigma2}
+            \end{equation}  
+            where $\#(E_{0};L)$ is the number of levels on interval $[E_{0}-L/2,E_{0}+L/2]$.
+            This statistics is easier to calculate, but it fluctuates more than the statistics $\Delta_{3}$.
+            Therefore, it is more suitable if we have a large set of levels or if we can perform the averaging $\langle\bullet\rangle$ over many realizations. 
+            
+            For $L$ large this statistics behave like
+            \begin{equation}
+                \Sigma^{2}(L)=\left\{\begin{array}{ll}
+                    0 & \text{for equidistant spectrum},\\
+                    L & \text{for integrable (Poissonian) spectrum},\\
+                    \frac{2}{\pi^{2}\beta}\ln L+d_{\beta}+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
+                \end{array}\right.
+            \end{equation}
+            where
+            \begin{equation}
+                d_{1}=\ln{2\pi}+\gamma-\frac{\pi^{2}}{8}+1.
+            \end{equation}
+
+    \begin{task}
+        Calculate the $\Delta_{3}$ and $\Sigma^{2}$ statistics for the integrable 2D box with spectrum~\eqref{eq:2Dbox} and for the unfolded $\ensemble{GOE}$ spectra obtained in Task~\ref{task:GOE} and compare numerical results with theretical asymptotic formulae~\eqref{eq:Delta3} and~\eqref{eq:Sigma2}.
+        Show that with wrong unfolding the deviations in these long-range correlations are rather high.
+    \end{task}
 
 \begin{thebibliography}{99}
     \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
@@ -959,18 +1069,26 @@
     \bibitem{Rei04} Linda E. Reichl, {\it The Transition to Chaos: Conservative Classical Systems and Quantum Manifestations} (Springer, 2004).
     \bibitem{Sto99} Hans-Jürgen Stöckmann, {\it Quantum Chaos: An Introduction} (Cambridge University Press, 1999).
     \bibitem{Ozo88} Alfredo M. Ozorio de Almeida, {\it Hamiltonian Systems: Chaos and Quantization} (Cambridge University Press, 1988).
-    \bibitem{Ber89} Michael Berry, {\it Quantum Chaology, Not Quantum Chaos}, Physica Scripta {\bf 40}, 335 (1989).
-    \bibitem{Boh84} Oriol Bohigas, Marie-Joya Giannoni, Carles Schmit, {\it Characterization of chaotic quantum spectra and universality of level fluctuation laws}, Physical Review Letters {\bf 52}, 1 (1984). 
-    \bibitem{Cas85} Giulio Casati, Boris V. Chirikov, Italo Guarneri, {\it Energy-Level Statistics of Integrable Quantum Systems}, Physical Review Letters {\bf 54}, 1350 (1985).
-    \bibitem{Wis28} John Wishart, {\it Generalized product moment distribution in samples}, Biometrica A {\bf 20}, 32 (1928).
+    \bibitem{Ber89} Michael Berry, {\it Quantum Chaology, Not Quantum Chaos}, \href{https://iopscience.iop.org/article/10.1088/0031-8949/40/3/013}{Physica Scripta {\bf 40}, 335 (1989)}.
+    \bibitem{Boh84} Oriol Bohigas, Marie-Joya Giannoni, Carles Schmit, {\it Characterization of chaotic quantum spectra and universality of level fluctuation laws}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.1
+    }{Physical Review Letters {\bf 52}, 1 (1984)}.
+    \bibitem{Cas85} Giulio Casati, Boris V. Chirikov, Italo Guarneri, {\it Energy-Level Statistics of Integrable Quantum Systems}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1350}{Physical Review Letters {\bf 54}, 1350 (1985)}.
+    \bibitem{Wis28} John Wishart, {\it The generalized product moment distribution in samples from a normal multivariate population}, \href{https://academic.oup.com/biomet/article-abstract/20A/1-2/32/204365}{Biometrica A {\bf 20}, 32 (1928)}.
     \bibitem{Wig51} Eugene Wigner, {\it On the statistical distribution of the widths and spacings of nuclear resonance levels}, Proceedings of the Cambridge Philosophical Society {\bf 47}, 790 (1951).
-    \bibitem{Wig55} Eugene Wigner, {\it Characteristic vectors of bordered matrices with many dimensions}, Annals of Mathematics {\bf 62}, 548 (1955).
+    \bibitem{Wig55} Eugene Wigner, {\it Characteristic vectors of bordered matrices with many dimensions}, \href{https://www.jstor.org/stable/1970079}{Annals of Mathematics {\bf 62}, 548 (1955)}.
     \bibitem{Wig57} Eugene Wigner, {\it Statistial properties of real symmetric matrices with infinite dimensions}, Canadian Mathematical Congress Proceedings, p. 174 (University of Toronto Press, 1957).
     \bibitem{Sin77} Yakov Grigorevich Sinai, {\it Introduction to Ergodic Theory}, Mathematical Notes (Book 18) (Princeton University Press, 1977).
-    \bibitem{Dys62} Freeman John Dyson, {\it Statistical theory of the energy levels of complex systems I--III}, Journal of Mathematical Physics {\bf 3}, \{140, 157, 166\} (1962).
-    \bibitem{Alt97} Alexander Altland, Martin R. Zirnbauer, {\it Nonstandard symmetry classes in mesoscopic normal-superconducting hybrid structures}, Physical Review B {\bf 55}, 1142 (1997).
-    \bibitem{Gin65} Jean Ginibre, {\it Statistical Ensembles of Comples, Quaternion, and Real Matrices}, Journal of Mathematical Physics {\bf 6}, 440 (1965).
-    \bibitem{Kac66} Mark Kac, {\it Can One Hear the Shape of a Drum?} American Mathematical Monthly {\bf 73}, 16 (1966).
+    \bibitem{Dys62} Freeman John Dyson, {\it Statistical theory of the energy levels of complex systems I--III}, Journal of Mathematical Physics {\bf 3}, \{\href{https://aip.scitation.org/doi/10.1063/1.1703773}{140}, \href{https://aip.scitation.org/doi/10.1063/1.1703774}{157}, \href{https://aip.scitation.org/doi/10.1063/1.1703775}{166}\} (1962).
+    \bibitem{Alt97} Alexander Altland, Martin R. Zirnbauer, {\it Nonstandard symmetry classes in mesoscopic normal-superconducting hybrid structures}, \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.1142}{Physical Review B {\bf 55}, 1142 (1997)}.
+    \bibitem{Gin65} Jean Ginibre, {\it Statistical Ensembles of Comples, Quaternion, and Real Matrices}, \href{https://aip.scitation.org/doi/10.1063/1.1704292}{Journal of Mathematical Physics {\bf 6}, 440 (1965)}.
+    \bibitem{Kac66} Mark Kac, {\it Can One Hear the Shape of a Drum?} \href{https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/MarkKac.pdf}{American Mathematical Monthly {\bf 73}, 16 (1966)}.
+    \bibitem{Per73} Ian Colin Percival, {\it Regular and irregular spectra}, \href{https://iopscience.iop.org/article/10.1088/0022-3700/6/9/002/pdf}{Journal of Physics B: Atomic and Molecular Physics {\bf 6}, L229 (1973)}.
+    \bibitem{Ber84} Michael Berry, Marko Robnik, {\it Semiclassical level spacings when regular and chaotic orbits coexist}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/17/12/013}{Journal of Physics A: Mathematical and General {\bf 17}, 2413 (1984)}.
+    \bibitem{Bro73} Thomas Brody, {\it A statistical measure for the repulsion of energy levels}, \href{https://link.springer.com/article/10.1007/BF02727859}{Lettere al Nuovo Cimento {\bf 7}, 482 (1973)}.
+    \bibitem{Izr89} Felix Izrailev, {\it Intermediate statistics of the quasi-energy spectrum and quantum localisation of classical chaos}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/22/7/017/meta}{Journal of Physics A: Mathematical and General {\bf 22}, 865 (1989)}.
+    \bibitem{Cau90} E. Caurier, Basil Grammaticos, Alfred Ramani, {\it Level repulsion near integrability: a random matrix analogy}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/23/21/029}{Journal of Physics A: Mathematical and General {\bf 23}, 4903 (1990)}.
+    \bibitem{Len91} Georg Lenz, Fritz Haake, {\it Reliability of Small Matrices for Large Spectra with Nonuniversal Fluctuations}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.67.1}{Physical Review Letters {\bf 67}, 1 (1991)}.
+    \bibitem{Boh75} Oriol Bohigas, Marie-Joya Giannoni, {\it Level Density Fluctuations and Random Matrix Theory}, \href{https://www.sciencedirect.com/science/article/abs/pii/0003491675901876}{Annals of Physics {\bf 89}, 393 (1975)}.
 \end{thebibliography}
 
 \end{document}

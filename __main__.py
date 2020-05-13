@@ -12,7 +12,7 @@ def NNSD2D():
     parameters = Box2D.Parameters(a, b)
     title = "2D box\n" + str(parameters)
 
-    spectrum = Box2D.CalculateSpectrum(parameters, 100000)
+    spectrum = Box2D.CalculateSpectrum(parameters, 1000000)
     unfolded = StretchSpectrum(spectrum)
     spacings = LevelSpacing(unfolded)
 
@@ -45,7 +45,7 @@ def NNSD3D():
     PlotNNSD(spacings, Poisson, extraTitle=title)
 
     # Polynomial unfolding
-    unfolded = PolynomialUnfolding(spectrum, 20)
+    unfolded = PolynomialUnfolding(spectrum, 30)
     PlotLevelDensity(unfolded, extraTitle="Unfolded" + title)
 
     unfolded = StretchSpectrum(unfolded)
@@ -58,10 +58,10 @@ def NNSDGOE():
     N = 1000
     title = f"GOE N = {N}"
 
-    spectrum = GOE.Ensemble(1000, 1, sigma=-1)
+    spectrum = GOE.Ensemble(1000, 1, sigma=1)
     PlotLevelDensity(spectrum, extraTitle=title)
 
-    unfolded = PolynomialUnfolding(spectrum, 10)
+    unfolded = PolynomialUnfolding(spectrum, 11)
     PlotLevelDensity(unfolded, extraTitle="Unfolded" + title)
 
     unfolded = StretchSpectrum(unfolded)
