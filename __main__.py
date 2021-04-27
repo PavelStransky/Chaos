@@ -45,7 +45,7 @@ def NNSD3D():
     PlotNNSD(spacings, Poisson, extraTitle=title)
 
     # Polynomial unfolding
-    unfolded = PolynomialUnfolding(spectrum, 30)
+    unfolded = PolynomialUnfolding(spectrum, 8)
     PlotLevelDensity(unfolded, extraTitle="Unfolded" + title)
 
     unfolded = StretchSpectrum(unfolded)
@@ -70,4 +70,6 @@ def NNSDGOE():
     spacings = LevelSpacing(unfolded)
     PlotNNSD(spacings, Wigner, extraTitle=title)
 
-NNSDGOE()
+#NNSD2D()
+#NNSD3D()
+NNSGOE()
