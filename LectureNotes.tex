@@ -111,7 +111,7 @@
                     &&\xrightarrow{\text{perturbation}}
                     &&\ket{\psi(0)}+\epsilon\ket{\psi_{\perp}(0)}
                     &&\xrightarrow{\text{normalization}}
-                    &&\ket{\xi(0)}\equiv\sqrt{1-\epsilon}\ket{\psi(0)}+\epsilon\ket{\psi_{\perp}(0)},
+                    &&\ket{\xi(0)}\equiv\sqrt{1-\epsilon^{2}}\ket{\psi(0)}+\epsilon\ket{\psi_{\perp}(0)},
                 \end{align}
                 \begin{align}
                     \braket{\psi(0)}{\psi(0)}=\braket{\psi_{\perp}(0)}{\psi_{\perp}(0)}=\braket{\xi(0)}{\xi(0)}=1,\nonumber\\
@@ -145,7 +145,7 @@
                 Therefore, \remember{a deviation of the state vector doesn't grow in time and can't be used to measure the chaoticity of the state (can't be used to define an analogue of the ``Lyapunov exponent'').}
         \end{itemize}
 
-    \subsection{... So what is a manifestation of chaos in quantum physics?}
+    \subsection{... So what is chaos in quantum physics?}
         What can one employ to study and analyze chaos in quantum mechanics?
         There are two principal approaches to study quantum chaos:
         \begin{enumerate}
@@ -199,7 +199,7 @@
         \end{align}
         hence
         \begin{equation}
-            \matrixelement{n_{1},\dotsc,n_{d}}{\operator{H}}{n'_{1},\dotsc,n'_{d}}=\delta_{n_{1}n'_{1}}\dotsb\delta_{n_{d}n'_{d}}
+            \matrixelement{n_{1},\dotsc,n_{d}}{\operator{H}}{n'_{1},\dotsc,n'_{d}}~\delta_{n_{1}n'_{1}}\dotsb\delta_{n_{d}n'_{d}}
         \end{equation}
         \remember{Eigenstates that correspond to different values of $n_{k}$ are not correlated} (the matrix element quantifying the ``interaction'' between them is identically zero).
 
@@ -226,7 +226,7 @@
         $p(s)\d s$ is therefore the probability that we find the level neigbouring to $E_{0}$ at interval $\d s$.
         We come to an integral equation\footnote{A separable Volterra integral equation of the $2^{\text{nd}}$ kind.} for $p(s)$,
         \begin{equation}
-            p(s)=\mu(s)\int_{x}^{\infty}p(s')\d s'.
+            p(s)=\mu(s)\int_{s}^{\infty}p(s')\d s'.
         \end{equation}
         
         \emph{Solution:} Let us define
@@ -384,7 +384,7 @@
         \end{equation}
         which is often called \remember{Wigner distribution}\footnote{Beware, there is another quantity in quantum mechanics called Wigner distribution (also called Wigner quasiprobability distribution or Wigner function).} (the derivation will be presented later in Sec.~\ref{sec:NNSD22}).
 
-        Compared with the Poisson distribution for an integrable system~\eqref{eq:Poisson}, which has a maximum at $s=0$, \emph{i.e.} the levels tend to bunch together, the spectrum satisfying the Wigner distribution exhibits clear \remember{level repulsion} (the probability of coinciding levels is $p_{w}(0)=0$\footnote{This phenomenon is tightly related with the quantum no-crossing theorem.}). 
+        Compared with the Poisson distribution for an integrable system~\eqref{eq:Poisson}, which has a maximum at $s=0$, \emph{i.e.} the levels tend to bunch together, the spectrum satisfying the Wigner distribution exhibits clear \remember{level repulsion} (the probability of coinciding levels is $p_{w}(0)=0$\footnote{This phenomenon is tightly related with the quantum \emph{no-crossing theorem.}}). 
 
         \subsection{Bohigas conjecture}
         At the beginning the theory of quantum matrices served just as a tool to study statistical spectral properties of many-body systems under unknown interactions, whereas quantum counterparts of classically chaotic systems were studied by semiclassical methods in systems with only a few degrees of freedom.
@@ -410,7 +410,7 @@
                     The complete discussion of this classification is beyond the scope of this lecture (and it belongs to the area of classical chaos theory), you can find it in~\cite{Sin77}.
                     It has been proved, though, that mixing at the classical level is sufficient to generate random matrix statistics.
                 } 
-                However, there is a vast list of numerical studies based on a wide variety of systems that support its validity (but there are also several counter-examples of systems that are classically regular, but have random-matrix-like quantum spectrum\footnote{For example the Šeba's billiard: a circular billiard with a $\delta$-function sitting in the middle.} and vice versa).
+                However, there is a vast list of numerical studies based on a wide variety of systems that support its validity (but there are also several counter-examples of systems that are classically regular, but have random-matrix-like quantum spectrum,\footnote{For example the Šeba's billiard: a circular billiard with a $\delta$-function sitting in the middle.} and vice versa).
         \end{enumerate}
 
 \section{Gaussian random matrix ensembles}
@@ -418,7 +418,7 @@
     What are some significant properties of an ensemble of matrices whose elements are random variables with a specific probability law? 
     What can we say about correlations among the eigenlevels and eigenvectors?
     
-    As happens many theories, their pioneers are often forgotten and hardly mentioned. 
+    As happens with many theories, their pioneers are often forgotten and scarcely mentioned. 
     A developement of the random matrix theory began in 1920s~\cite{Wis28} but did not draw much attention at that time.
     The theory became more popular when Wigner formulated his surmise, see Section~\ref{sec:Wigner},
     but a mathematically rigorous foundations of the so called Random Matrix Theory (RMT) were established in a series of beautiful papers by Dyson~\cite{Dys62}\footnote{
@@ -920,7 +920,7 @@
 
             \item
                 If we are not able to calculate the phase space integral~\eqref{eq:Smooth}, because we either do not know the semiclassical Hamiltonian, or the integration is too laborious, we have to find an aproximation of the smooth level density.
-                The accummulated level density calculated from the spectrum is
+                The accumulated level density calculated from the spectrum is
                 \begin{equation}
                     N(E)=\sum_{j}\Theta\left(E-E_{j}\right),
                 \end{equation}
@@ -928,7 +928,7 @@
                 Its smooth part is obtained by least-square fit of an appropriate function, usually by a polynomial of a rather small degree (usually between 3 and 7).
 
                 One has to be extra cautious here: by taking a function that does not fit well to $N(E)$, a part of the smooth level density will remain in the unfolded spectrum and will distort the correlation statistics.
-                On the other hand, if we ``overfit'' the accummutated level density, we get rid of the interesting oscillatory part of the spectrum and we may even end up with an equidistant ``picket-fense'' spectrum.
+                On the other hand, if we ``overfit'' the accumutated level density, we get rid of the interesting oscillatory part of the spectrum and we may even end up with an equidistant ``picket-fense'' spectrum.
                 Extra care must be also taken at the outer limits of the fitted spectrum, where any approximating function has usually the highest deviation (it is also a common practice to disregard a small part of lowest and highest energy levels after unfolding).
                 The approximate unfolding is thus a very delicate procedure, and it requires some experience and feeling to get it right.  
 
@@ -938,7 +938,7 @@
 
         \begin{task}
             Repeat the calculations of Task~\ref{task:2Dbox}, but for a 3D box with incommensurate edge lengths.
-            Plot the level density and the accummulated level density, carry out the unfolding, and show the NNSD for the unfolded levels.
+            Plot the level density and the accumulated level density, carry out the unfolding, and show the NNSD for the unfolded levels.
             Try to do the unfolding both by means of the exact formula~\eqref{eq:NWell} and by a polynomial fit.
         \end{task}
 
@@ -996,7 +996,7 @@
 
         \subsubsection{$\Delta_{3}$ statistics}
             This is one of the most commonly used long-range statistics.
-            It consists of approximating the unfolded cummulative level density $\overline{N}(e)$ with line segments of length $L$ and taking the average square deviation,
+            It consists of approximating the unfolded cumulative level density $\overline{N}(e)$ with line segments of length $L$ and taking the average square deviation,
             \begin{equation}
                 \Delta_{3}(E_{0};L)
                 =\frac{1}{L}\left\langle\min_{a,b}\int_{e_{0}-\frac{L}{2}}^{E_{0}+\frac{L}{2}}\left[\overline{N}(e)-ae-b\right]^{2}\d e\right\rangle,
