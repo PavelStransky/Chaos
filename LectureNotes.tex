@@ -62,7 +62,8 @@
 \theoremstyle{blue}
 \newtheorem{solution}{Solution}[section]
 
-\title{Lecture Notes on Quantum Chaos}
+\title{\includegraphics[width=\linewidth]{logolink_OP_VVV_hor_barva_eng.jpg}\\
+Lecture Notes on Quantum Chaos}
 \date{\today}
 \author{Pavel Stránský}
 
@@ -1059,6 +1060,30 @@
         Calculate the $\Delta_{3}$ and $\Sigma^{2}$ statistics for the integrable 2D box with spectrum~\eqref{eq:2Dbox} and for the unfolded $\ensemble{GOE}$ spectra obtained in Task~\ref{task:GOE} and compare numerical results with theretical asymptotic formulae~\eqref{eq:Delta3} and~\eqref{eq:Sigma2}.
         Show that with wrong unfolding the deviations in these long-range correlations are rather high.
     \end{task}
+
+\section{Quantum standard map}
+    Quantum standard map models for example atoms and molecules under short pulses of a laser beam.
+    Hamiltonian of the standard map
+    \begin{equation}
+        H=\frac{p^{2}}{2}+V(q)\sum_{n=-\infty}^{\infty}\delta(t-n),
+    \end{equation}
+    where $(p,q)$ are canonically conjugate momentum and coordinate.
+    The potential is periodic in $q$,
+    \begin{equation}
+        V(q+k)=V(q),\quad k\in\mathbb{Z}.
+    \end{equation}
+    and for the standard map it reads as
+    \begin{equation}
+        V(q)=\frac{K}{(2\pi)^{2}}\cos{2\pi q}.
+    \end{equation}
+    The coordinate at $n$-th kick, and the momentum just before and just after the $n$-th kick, are
+    \begin{subequations}
+        \begin{align}
+            p_{n+1}&=p_{n}-\derivative{V}{q}(q_{n})=p_{n}+\frac{K}{2\pi}\sin{2\pi q},\\
+            q_{n+1}&=\left(q_{n}+p_{n+1}\right)\mod{1}
+        \end{align}
+    \end{subequations}
+
 
 \begin{thebibliography}{99}
     \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
