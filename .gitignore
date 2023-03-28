@@ -276,7 +276,7 @@ TSWLatexianTemp*
 *.lpz
 
 # Pavel Stránský
-__pycache__/*
+**/__pycache__/*
 sources/*
 
 .vscode/
