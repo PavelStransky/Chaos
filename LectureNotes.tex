@@ -206,17 +206,17 @@ Lecture Notes on Quantum Chaos}
         \remember{Eigenstates that correspond to different values of $n_{k}$ are not correlated} (the matrix element quantifying the ``interaction'' between them is identically zero).
 
     \subsection{Quantum integrable systems}
-        Again, in analogy with classical physics, when there exist $d=f$ independent quantum integrals of motion, the system is called \emph{integrable}.
-        The results of the previous section imply that in such a system each state can be uniquely labeled with a set of $f$ quantum numbers that are eigenvalues of the $f$ integrals of motion.
-        The common eigenstates of these operators form a basis for the Hamiltonian and the Hamiltonian can be made diagonal in it.
+        Again, in analogy with classical physics, when $d=f$ independent quantum integrals of motion exist, the system is called \emph{integrable}.
+        The results of the previous section imply that in such a system, each state can be uniquely labelled with a set of $f$ quantum numbers that are eigenvalues of the $f$ integrals of motion.
+        The typical eigenstates of these operators form a basis for the Hamiltonian, which can be made diagonal in it.
         Therefore, \remember{in quantum integrable systems, all the eigenstates are uncorrelated.}
 
     \subsection{Nearest neighbour spacing distribution}
         This is one of the most used spectral statistics.
-        It measures the probability that we find two neighbouring levels one at a distance $s$ from the other.
+        It measures the probability of finding two neighbouring levels at a distance $s$ from each other.
 
-        Let us derive now what the Nearest Neighbour Spacing Distribution (NNSD) of a generic quantum integrable system looks like.
-        Suppose there is a quantum level at $E=E_{0}$, and $p(s)$ is the probability density that we find the next level at distance $s$ from $E_{0}$.  
+        Let us now derive the Nearest Neighbour Spacing Distribution (NNSD) of a generic quantum integrable system.
+        Suppose there is a quantum level at $E=E_{0}$, and $p(s)$ is the probability density that we find the next level at a distance $s$ from $E_{0}$.  
         Without the loss of generality, we can set $E_{0}=0$.
         Now we can schematically write 
         \begin{equation}
@@ -225,7 +225,7 @@ Lecture Notes on Quantum Chaos}
                 \underbrace{\text{Probability}\left(\text{no level in }I\right)}_{1-\int_{0}^{s}p(s')\d s'=\int_{s}^{\infty}p(s')\d s'},
         \end{equation}
         where $I=(0,s)$ is an interval spanning from $E=E_{0}=0$ to $E=E_{0}+s$ and $\d I=(s,s+\d s)$.
-        Number $p(s)\d s$ is therefore the probability that we find the level neigbouring to $E_{0}$ at interval $\d s$.
+        Number $p(s)\d s$ is the probability that we find the level neighbouring to $E_{0}$ at interval $\d s$.
         We come to an integral equation\footnote{A separable Volterra integral equation of the $2^{\text{nd}}$ kind.} for $p(s)$,
         \begin{equation}
             p(s)=\mu(s)\int_{s}^{\infty}p(s')\d s'.
@@ -247,8 +247,8 @@ Lecture Notes on Quantum Chaos}
         \begin{equation}\label{eq:pseq}
             p(s)=P_{0}\mu(s)\e^{-\int_{0}^{s}\mu(s')\d s'},
         \end{equation}
-        where $P_{0}$ is fixed by the normalization of probability.
-        On top of that, the mean spacing is normalized to one.
+        where $P_{0}$ is fixed by the normalisation of probability.
+        On top of that, the mean spacing is normalised to one.
         It leads to the following two conditions:
         \begin{align}
             \int_{0}^{\infty}p(s)\d s&=1,\nonumber\\
@@ -266,16 +266,16 @@ Lecture Notes on Quantum Chaos}
             \label{eq:Poisson}
             \boxed{p_{\text{int}}(s)=\e^{-s}}
         \end{equation}
-        (the subscript ``int'' indicates that this is the NNSD for integrable systems).
+        (the subscript ``int'' indicates this is the NNSD for integrable systems).
         
         The simplest quantum integrable systems that you have encountered (isotropic harmonic oscillator, hydrogen atom) are, in fact, exceptions from the generic situation, with NNSD different from the one just derived. 
         Why? 
-        The reason is that these systems are what is sometimes called \emph{superintegrable}: Their symmetry is higher than necessary, and they have more integrals of motion than $f=3$ (for the hydrogen atom it is the Runge-Lenz vector; isotropic harmonic oscillator has an analogous additional integral of motion).
+        The reason is that these systems are what is sometimes called \emph{superintegrable}: Their symmetry is higher than necessary, and they have more integrals of motion than $f=3$ (for the hydrogen atom, it is the Runge-Lenz vector; isotropic harmonic oscillator has an additional analogous integral of motion).
         In other words, they are invariant with respect to a higher symmetry group than necessary: For an isotropic system, it is sufficient to be invariant with respect to $\group{SO(3)}$, while the isotropic harmonic oscillator is invariant with respect to $\group{U(3)}$ group, and the hydrogen atom to $\group{SO(4)}$.
 
         \begin{task}\label{task:2Dbox}
             One of the generic systems with an almost Poissonian spectrum that can be calculated easily is the 2D incommensurate rectangular infinite potential well.\footnote{It is also an example of a billiard system.}
-            It is an integrable system because it is fully separable (it can be solved in each dimension separately and the appropriate Hilbert space for the full system can be written as a product of Hilbert spaces of the subsystems; the Hamiltonian of each of the subsystems is an integral of motion on its own).
+            It is an integrable system because it is fully separable. It means that it can be solved in each dimension separately. The appropriate Hilbert space for the entire system can be written as a product of the Hilbert spaces of the subsystems. The Hamiltonian of each subsystem is an integral of motion on its own.
             Its spectrum is given by the formula
             \begin{equation}
                 E_{n_{1},n_{2}}
@@ -286,7 +286,7 @@ Lecture Notes on Quantum Chaos}
             Incommensurate means that their ratio $\alpha=a/b$ is not a rational number.
             The best choice of $\alpha$ is something close to $1$.
 
-            Calculate a sufficient and complete part of the spectrum of this system (at least $1000$ lowest-lying states, but it is easy and fast to reach up to $10^6$ states) and plot a histogram of the nearest neighbour spacing distribution.
+            Calculate a whole part of the spectrum of this system with a sufficient number of eigenenergies (at least $1000$ lowest-lying states, but it is easy and fast to reach up to $10^6$ states) and plot a histogram of the nearest neighbour spacing distribution.
             Compare this histogram with the theoretical prediction~\eqref{eq:Poisson}.
             You can choose
             \begin{equation}
@@ -294,18 +294,18 @@ Lecture Notes on Quantum Chaos}
             \end{equation}
             or any random number close to 1.
 
-            Play a little with this simple model, you can, for example, use a rational number for $\alpha$ and test how sensitive is the NNSD to ``resonances'' in the spectrum caused by the commensurate box dimensions.
+            Play a little with this simple model; you can, for example, use a rational number for $\alpha$ and test how sensitive the NNSD is to ``resonances'' in the spectrum caused by the commensurate box dimensions.
 
             More details about this system are given in Ref.~\cite{Cas85}.
         \end{task}
 
         \begin{solution}
-            A Python code with the solution is in the \href{https://github.com/PavelStransky/Chaos}{public GitHub repository of this project}.
+            A Python code with the solution is in the \href{https://github.com/PavelStransky/Chaos/python}{public GitHub repository of this project}.
             It consists of three files: 
             \begin{itemize}
                 \item 
                     \file{Box2D.py}: A file with the model specification. 
-                    It contains functions to calculate the spectrum and renormalize it to obtain unit average level density.
+                    It contains functions to calculate and renormalise the spectrum to obtain unit average level density.
                 \item
                     \file{Statistics.py}: Functions to plot histograms, compare numerical distributions with exact ones etc.
                     Common for all (future) models.
@@ -323,7 +323,7 @@ Lecture Notes on Quantum Chaos}
                     The NNSD will be improved if the lowest part of the spectrum is disregarded.
                 \item
                     2D box with a strong resonance, $\alpha=3/2$ (second line of the Figure).
-                    There is no irregularity observed in the level dynamics, but the NNSD is not Poissonian at all.
+                    No irregularity is observed in the level dynamics, but the NNSD is not Poissonian.
                     The resonance introduces correlations among the levels, which disturb the Poisson distribution.
                 \item
                     2D box with a weak resonance, $\alpha=11/10$ (third line of the Figure).
@@ -367,12 +367,12 @@ Lecture Notes on Quantum Chaos}
 
     \subsection{Wigner surmise}\label{sec:Wigner}
         The field of quantum chaos started developing with the work of Eugene Wigner in the 1950s. 
-        At that time it was observed in the measurements of high-lying slow nuclear resonances a lack of close states.
-        At first, it was being explained by imperfect measuring techniques, but then Wigner~\cite{Wig51,Wig55,Wig57} proposed and succeeded to use the Random Matrix Theory (RMT) to describe this suspicious behaviour of the resonances, and he formulated the so-called
+        At that time, a lack of close states was observed in high-lying slow nuclear resonances.        
+        At first, it was being explained by imperfect measuring techniques, but then Wigner~\cite{Wig51,Wig55,Wig57} proposed and succeeded in using the Random Matrix Theory (RMT) to describe this suspicious behaviour of the resonances, and he formulated the so-called
         \begin{theorem}
             {\bf (Wigner surmise)}
             Suppose we have a complicated and complex system with an (often high) unknown number of degrees of freedom (such as a highly excited atomic nucleus\footnote{
-                Low-lying nuclear excitations are successfully explained by a plethora of models, \emph{e.g.} nuclear collective models, shell model, etc., with only a relatively small number of degrees of freedom.
+                A plethora of models successfully explains low-lying nuclear excitations, \emph{e.g.} nuclear collective models, shell model, etc., with only a relatively small number of degrees of freedom.
                 These models become more and more inaccurate as the excitation energy increases, making the approximation of the complicated nucleon interactions impossible.})
             and we do not know anything about the interaction among the constituents.
             The only thing we know about the Hamiltonian is the symmetry it satisfies (rotational invariance, time-reversal invariance etc.).
@@ -388,18 +388,19 @@ Lecture Notes on Quantum Chaos}
         Compared with the Poisson distribution for an integrable system~\eqref{eq:Poisson}, which has a maximum at $s=0$, \emph{i.e.} the eigenlevels tend to bunch together, the spectrum satisfying the Wigner distribution exhibits clear \remember{level repulsion} (the probability of coinciding levels is $p_{w}(0)=0$\footnote{This phenomenon is tightly related with the quantum \emph{no-crossing theorem.}}). 
 
         \subsection{Bohigas conjecture}
-        In the beginning, the theory of quantum matrices served just as a tool to study statistical spectral properties of many-body systems under unknown interactions, whereas quantum counterparts of classically chaotic systems were studied by semiclassical methods in systems with only a few degrees of freedom.
+        In the beginning, the theory of quantum matrices was just a tool to study the statistical spectral properties of many-body systems under unknown interactions. 
+        In contrast, quantum counterparts of classically chaotic systems were studied by semiclassical methods in systems with only a few degrees of freedom.
         But then, in 1984, Bohigas, Giannoni and Schmit published a ground-breaking paper~\cite{Boh84} stating:
         \begin{theorem}
             {\bf (Bohigas (-Giannoni-Schmit) conjecture)}
             \remember{All quantum systems whose classical analogues are chaotic exhibit the same spectral fluctuation properties as predicted by the theory of random matrices.}
-            On the contrary, quantum systems whose classical analogues are stable (not necessarily integrable) have uncorrelated energy levels.
+            On the contrary, quantum systems with stable classical analogues (not necessarily integrable) have uncorrelated energy levels.
         \end{theorem}
         This paper established the field that is since then called quantum chaos.
 
         Now some remarks: 
         \begin{enumerate}
-            \item Until now the conjecture has not been proved in its generality.\footnote{
+            \item Until now, the conjecture has not been proved in its generality.\footnote{
                     There are several different classes of classically chaotic systems:
                     \begin{equation*}
                         \boxed{\text{Ergodic}}
@@ -408,30 +409,30 @@ Lecture Notes on Quantum Chaos}
                             \supset\boxed{\text{Kolmogorov ($K$-)}}
                             \supset\boxed{\text{Bernoulli ($B$-)}}
                     \end{equation*}
-                    The complete discussion of this classification is beyond the scope of this lecture (and it belongs to the area of classical chaos theory), you can find it in~\cite{Sin77}.
+                    The complete discussion of this classification is beyond the scope of this lecture (and it belongs to the area of classical chaos theory); you can find it in~\cite{Sin77}.
                     It has been proved, though, that mixing at the classical level is sufficient to generate random matrix statistics.
                 } 
                 However, there is a vast list of numerical studies based on a wide variety of systems that support its validity (but there are also several counter-examples of systems that are classically regular but have random-matrix-like quantum spectrum,\footnote{For example the Šeba's billiard: a circular billiard with a $\delta$-function sitting in the middle.} and vice versa).
         \end{enumerate}
 
 \section{Gaussian random matrix ensembles}
-    The main question is the following: 
+    The main question now is the following: 
     What are some significant properties of an ensemble of matrices whose elements are random variables with a specific probability law? 
     What can we say about correlations among the eigenlevels and eigenvectors?
     
-    As happens with many theories, their pioneers are often forgotten and scarcely mentioned. 
-    The development of the random matrix theory began in the 1920s~\cite{Wis28} but did not draw much attention at that time.
+    As with many theories, their pioneers are often forgotten and scarcely mentioned. 
+    The development of the random matrix theory began in the 1920s~\cite{Wis28} but did not draw much attention then.
     The theory became more popular when Wigner formulated his surmise, see Section~\ref{sec:Wigner},
     but mathematically rigorous foundations of the so-called Random Matrix Theory (RMT) were established in a series of beautiful papers by Dyson~\cite{Dys62}\footnote{
-        Freeman John Dyson, who passed away in 2020, was an author or co-author of many seminal ideas and theorems in mathematics and physics, although only a few are named after him, probably due to his modesty (the most famous is the Dyson series, leading to Feynman-Dyson diagrams). As a curiosity, he became a professor without having finished his PhD studies.
+        Freeman John Dyson, who passed away in 2020, was an author or co-author of many seminal ideas and theorems in mathematics and physics. However, only a few are named after him, probably due to his modesty (the most famous is the Dyson series, leading to Feynman-Dyson diagrams). As a curiosity, he became a professor without having finished his PhD studies.
         He is a laureate of the Templeton Prize.
     }
     (the distribution~\eqref{eq:Wigner} is sometimes called the \emph{Wigner-Dyson distribution}).
-    He introduced the classification of the Gaussian random matrix ensembles according to their invariance properties under time reversal and proved that there are only three classes of them (universality classes) and he aptly stated: ``What is here required is a new kind of statistical mechanics, in which we renounce exact knowledge not of the state of the system but of the system itself.
-    We picture a complex nucleus as a `black box' in which a large number of particles are interacting according to unknown laws.
+    He introduced the classification of the Gaussian random matrix ensembles according to their invariance properties under time reversal. He proved that there are only three classes of them (universality classes), and he aptly stated: ``What is here required is a new kind of statistical mechanics, in which we renounce exact knowledge not of the state of the system but of the system itself.
+    We picture a complex nucleus as a `black box' in which a large number of particles interact according to unknown laws.
     The problem then is to define in a mathematically precise way an ensemble of systems in which all possible laws of interaction are equally possible.''
 
-    So what is the Gaussian random matrix and what are the available ensembles?
+    So what is the Gaussian random matrix, and what are the available ensembles?
     \begin{theorem}\label{th:GE}
         The Gaussian random matrix $\matrix{H}$ is a matrix from an ensemble of matrices with probability distribution $P(\matrix{H})$, satisfying
         \begin{enumerate}
@@ -442,11 +443,11 @@ Lecture Notes on Quantum Chaos}
                 (necessary if we want matrix $\matrix{H}$ to correspond with the Hamiltonian of a physical system).
             \item Matrix elements of $\matrix{H}$ are statistically independent.
         \end{enumerate}
-        From these two requirements it follows that the distribution of matrix elements is Gaussian (this statement will be proved in Section~\ref{sec:NNSD22}).
+        From these two requirements, it follows that the distribution of matrix elements is Gaussian (this statement will be proved in Section~\ref{sec:NNSD22}).
     \end{theorem}
 
     The three available ensembles are\footnote{
-        From a mathematical point of view, these three classes exhaust the distinct real associative normed division algebras (in effect number systems).
+        From a mathematical point of view, these three classes exhaust the distinct real associative normed division algebras (in effect, number systems).
         That is why there are just these three ensembles.
     }: 
     \begin{enumerate}
@@ -458,7 +459,7 @@ Lecture Notes on Quantum Chaos}
                 \quad\transpose{\matrix{O}}\matrix{O}=\matrix{1}.
             \end{equation}
             The matrix $\matrix{H}$ modelling the Hamiltonian of our system is real symmetric and has $N(N+1)/2$ independent real components.
-            The majority of systems belong to the $\ensemble{GOE}$.
+            The majority of quantum systems belong to the $\ensemble{GOE}$.
 
         \item {\bf Gaussian Unitary Ensemble ($\ensemble{GUE}$), $\beta=2$}: 
             Systems not invariant under time reversal.
@@ -479,8 +480,7 @@ Lecture Notes on Quantum Chaos}
             \end{equation}
             The matrix $\matrix{H}$ is quaternionic Hermitian and has $N(2N-1)$ independent components.\footnote{Quaternionic $N\times N$ matrix can be modelled by $2N\times 2N$ complex matrices.}
             This is the least common case to encounter.
-            Systems in this class exhibit Kramers's degeneracy.
-            Systems with half-integer spins belong to this class. 
+            Systems in this class have half-integer spins and exhibit Kramers's degeneracy.
             Note that the first experiment to obtain the $\ensemble{GSE}$-like spectrum was performed quite recently~\cite{Reh16} using specially designed quantum graphs.
     \end{enumerate} 
     Index $\beta$ is called the \remember{Dyson number}.
@@ -497,7 +497,7 @@ Lecture Notes on Quantum Chaos}
     In these notes, we shall restrict ourselves on the Gaussian ensembles only.
 
     \subsection{$2\times2$ GOE matrices}\label{sec:NNSD22}
-        Many of the properties of random matrix ensembles can be demonstrated on the smallest nontrivial matrices possible (and some of the properties can be explicitly derived only for these matrices).
+        Many properties of random matrix ensembles can be demonstrated on the smallest nontrivial matrices possible (and some of the properties can be explicitly derived only for these matrices).
 
         \subsubsection{Probability distribution}
             In this section, we will derive the properties of a $2\times2$ random matrix from the Gaussian Orthogonal Ensemble (usually abbreviated as $\ensemble{GOE}$ random matrix).
@@ -517,11 +517,11 @@ Lecture Notes on Quantum Chaos}
             \begin{align}\label{eq:O}
                 \matrix{O}(\theta)
                     &=\makematrix{\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta}
-                    \approx\makematrix{1 & \theta \\ -\theta & 1}\\
-                    \transpose{\matrix{O}}(\theta),
+                    \approx\makematrix{1 & \theta \\ -\theta & 1},\\
+                    \transpose{\matrix{O}}(\theta)
                     =\matrix{O}^{-1}(\theta)
                     &=\makematrix{\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta}
-                    \approx\makematrix{1 & -\theta \\ \theta & 1}
+                    \approx\makematrix{1 & -\theta \\ \theta & 1},
             \end{align}
             and depends on just one parameter (angle) $\theta$.
             Without the loss of generality, we can consider infinitesimal rotations $\theta\approx0$ only.
@@ -589,8 +589,8 @@ Lecture Notes on Quantum Chaos}
             (we called the arbitrary separation constant $-4A$).
             The second equation can be further separated into
             \begin{align}
-                \derivative{P_{11}}{H_{11}}+2AH_{11}&=-B\nonumber\\
-                \derivative{P_{22}}{H_{22}}+2AH_{22}&=-B.
+                \frac{1}{P_{11}}\derivative{P_{11}}{H_{11}}+2AH_{11}&=-B\nonumber\\
+                \frac{1}{P_{22}}\derivative{P_{22}}{H_{22}}+2AH_{22}&=-B.
             \end{align}
             The solutions of the separated $1^{\text{st}}$ differential equations are
             \begin{align}
@@ -600,25 +600,25 @@ Lecture Notes on Quantum Chaos}
             \end{align}
             where $C_{11}$, $C_{12}$, and $C_{22}$ are integration constant.
 
-            The probability distribution is therefore
+            The probability distribution is, therefore,
             \begin{equation}
                 \label{eq:PHelements}
                 P(\matrix{H})=C\e^{-A\left(H_{11}^{2}+H_{22}^{2}+2H_{12}^{2}\right)-B\left(H_{11}+H_{22}\right)},
             \end{equation}
-            where $C=C_{11}C_{12}C_{22}$ is a normalization constant constrained by condition~\eqref{eq:Hnorm}, $A$ fixes the unit of energy, and $B$ gives the shift of energy (can be made $0$ by an appropriate choice of zero energy), so the distribution can be finally written in the form
+            where $C=C_{11}C_{12}C_{22}$ is a normalisation constant constrained by condition~\eqref{eq:Hnorm}, $A$ fixes the unit of energy, and $B$ gives the shift of energy (can be made $0$ by an appropriate choice of zero energy), so the distribution can finally be written in the form
             \begin{equation}
                 \label{eq:PH}
-                \important{P(\matrix{M})=C\e^{-A\trace\matrix{H}^{2}}}.
+                \important{P(\matrix{H})=C\e^{-A\trace\matrix{H}^{2}}}.
             \end{equation}
 
             A couple of observations and comments:
             \begin{enumerate}
                 \item 
-                    From the distribution~\eqref{eq:PHelements} it follows that the nondiagonal elements have half the dispersion that the diagonal elements.
+                    From the distribution~\eqref{eq:PHelements}, it follows that the nondiagonal elements have half the dispersion that the diagonal elements.
                     This is important for the numerical generation of $\ensemble{GOE}$ random matrices.
 
                 \item
-                    The expression~\eqref{eq:PH} is valid for other Gaussian matrix ensembles ($\ensemble{GUE}$ and $\ensemble{GSE}$) and for an arbitrary matrix dimension $N$).    
+                    The expression~\eqref{eq:PH} is valid for other Gaussian matrix ensembles ($\ensemble{GUE}$ and $\ensemble{GSE}$) and an arbitrary matrix dimension $N$.    
             \end{enumerate}
 
         \subsubsection{Eigenvalues distribution}
@@ -663,7 +663,7 @@ Lecture Notes on Quantum Chaos}
 
             Some comments:
             \begin{enumerate}
-                \item The eigenvalues distribution is independent of the angle $\theta$.
+                \item The eigenvalue distribution is independent of the angle $\theta$.
                 \item For a general $N$-dimensinal matrix from a Gaussian ensemble with Dyson index $\beta$, the joint probability distribution for eigenvalues is
                     \begin{equation}
                         \label{eq:PE}
@@ -679,7 +679,10 @@ Lecture Notes on Quantum Chaos}
                     &\equationcomment{\text{We suppose that $E_{+}>E_{-}$ and substitute $E_{+}\rightarrow\sigma$:} \\
                         \sigma=E_{+}-E_{-},\\
                         \d\sigma=\d E_{+}}\nonumber\\
+                    &=C\int_{0}^{\infty}\d\sigma\intinf\d E_{-}\delta(s-\sigma)\sigma\e^{-A\left[\left(\sigma+E_{-}\right)^{2}+E_{-}^{2}\right]}\nonumber\\
                     &=C\intinf\d E_{-}\,s\e^{-A\left(s^{2}+2sE_{-}+2E_{-}^{2}\right)}\nonumber\\
+                    &=C\intinf\d E_{-}\,s\e^{-A\left[\frac{s^{2}}{2}+\left(\sqrt{2}E_{-}+\frac{s}{\sqrt{2}}\right)^{2}\right]}\nonumber\\
+                    &=C\intinf\frac{\d e}{\sqrt{2}}s\e^{-A\frac{s^{2}}{2}}\e^{-A e^{2}}\nonumber\\
                     &=Ds\e^{-\frac{A}{2}s^{2}}.
             \end{align} 
             After normalizing and rescaling to have a unit mean level spacing~\eqref{eq:psnorm}, we land to the already discussed Wigner distribution~\eqref{eq:Wigner},
