@@ -28,7 +28,7 @@ class Box3D:
         return this.volume() * this.M / (np.pi**2 * this.hbar**3) * np.sqrt(this.M * e / 2)
 
     def cummulative_level_density(this, e):
-        return this.volume() * this.M / (3 * np.pi**2 * this.hbar**3) * np.sqrt(2 * this.M * e**3)
+        return this.volume() * this.M / (np.pi**2 * this.hbar**3) * np.sqrt(2 * this.M * e**3)
 
     def energy_level(this, n, m, p):
         return this.K * ((n / this.a)**2 + (m / this.b)**2 + (p / this.c)**2)

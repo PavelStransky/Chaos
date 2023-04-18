@@ -4,6 +4,7 @@ import numpy as np
 from Box2D import Box2D
 from Box3D import Box3D
 from GOE import GOE
+import Stadium
 
 from Statistics import *
 from Plots import *
@@ -68,8 +69,22 @@ def NNSDGOE(size=1000, polynomial_order=11):
     spacings = level_spacing(unfolded)
     plot_nnsd(spacings, wigner, extraTitle=title)
 
+def NNSDStadium(size=1000, polynomial_order=7):
+    spectrum = _Stadium.stadium_energies(Ne=size, full=False)
+    title = "Stadium"
+
+    plot_level_density(spectrum, extraTitle=title)
+
+    unfolded = polynomial_unfolding(spectrum, polynomial_order)
+    plot_level_density(unfolded, extraTitle=f"Unfolded ({polynomial_order} order polynomial)" + title)
+
+    spacings = level_spacing(unfolded)
+    plot_nnsd(spacings, wigner, extraTitle=title)
+
 
 #NNSD2D()
 #NNSD2D(a=1, b=1.5)
 #NNSD3D()
-NNSDGOE()
+#NNSDGOE()
+
+NNSDStadium(size=1000)
