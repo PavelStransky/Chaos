@@ -278,5 +278,6 @@ TSWLatexianTemp*
 # Pavel Stránský
 **/__pycache__/*
 sources/*
+**/_*
 
 .vscode/
