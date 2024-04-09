@@ -182,18 +182,24 @@ Lecture Notes on Quantum Chaos}
         In classical physics, integrals of motions $I_j(\vector{p},\vector{q})$ are a set of functions that are conserved throughout the system's time evolution.
         They are always connected with an additional symmetry of the system.
         Their Poisson bracket with the Hamiltonian function $H$ is zero, and one usually restricts oneself to the integrals of motion \emph{in involution}, whose mutual Poisson bracket vanishes,
-        \begin{align}
-            \poisson{I_{j}}{H}=0,\nonumber\\
-            \poisson{I_{j}}{I_{k}}=0.
-        \end{align}
+        \begin{subequations}
+            \begin{align}
+                \poisson{I_{j}}{H}&=0,\\
+                \poisson{I_{j}}{I_{k}}&=0.
+            \end{align}                
+        \end{subequations}
         
-        Suppose now we have a quantum system with $f$ degrees of freedom described by a time-independent Hamiltonian $\operator{H}$.
+        Suppose we have a quantum system with $f$ degrees of freedom described by a time-independent Hamiltonian $\operator{H}$.
         Operators $\operator{I}_{1},\dotsc,\operator{I}_{d}$, $d\leq f$ that satisfy
-        \begin{align}
-            \commutator{\operator{I}_{j}}{\operator{H}}&=0,\nonumber\\
-            \commutator{\operator{I}_{j}}{\operator{I}_{k}}&=0,
-        \end{align}
-        are the so called \emph{quantum integrals of motion}.
+        \begin{subequations}
+            \begin{align}
+                \commutator{\operator{I}_{j}}{\operator{H}}&=0,\\
+                \commutator{\operator{I}_{j}}{\operator{I}_{k}}&=0,
+            \end{align}                
+        \end{subequations}
+        are the so called \emph{quantum integrals of motion}.\footnote{
+            A common example of such integrals of motion are the angular momentum and parity, $J^{\pi}$.
+        }
         Their existence implies that there exists an orthonormal basis $\ket{n_{1},\dotsc,n_{d}}$ such that 
         \begin{equation}
             \operator{I}_{j}\ket{n_{1},\dotsc,n_{d}}=n_{j}\ket{n_{1},\dotsc,n_{d}},
@@ -201,20 +207,43 @@ Lecture Notes on Quantum Chaos}
         and the Hamiltonian has a block-diagonal structure because
         \begin{align}
             0&=\matrixelement{n_{1},\dotsc,n_{k},\dotsc,n_{d}}{\commutator{\operator{H}}{\operator{I}_{k}}}{n_{1},\dotsc,n'_{k},\dotsc,n_{d}}\nonumber\\
-            &\qquad=\matrixelement{n_{1},\dotsc,n_{k},\dotsc,n_{d}}{\left(\operator{H}\operator{I}_{k}-\operator{I}_{k}\operator{H}\right)}{n_{1},\dotsc,n'_{k},\dotsc,n_{d}}\\
-            &\qquad=\left(n_{k}-n'_{k}\right)\matrixelement{n_{1},\dotsc,n_{k},\dotsc,n_{d}}{\operator{H}}{n_{1},\dotsc,n'_{k},\dotsc,n_{d}},\nonumber
+            &\qquad=\matrixelement{n_{1},\dotsc,n_{k},\dotsc,n_{d}}{\left(\operator{H}\operator{I}_{k}-\operator{I}_{k}\operator{H}\right)}{n_{1},\dotsc,n'_{k},\dotsc,n_{d}}\nonumber\\
+            &\qquad=\left(n_{k}-n'_{k}\right)\matrixelement{n_{1},\dotsc,n_{k},\dotsc,n_{d}}{\operator{H}}{n_{1},\dotsc,n'_{k},\dotsc,n_{d}},
         \end{align}
         hence
         \begin{equation}
             \matrixelement{n_{1},\dotsc,n_{d}}{\operator{H}}{n'_{1},\dotsc,n'_{d}}\propto\delta_{n_{1}n'_{1}}\dotsb\delta_{n_{d}n'_{d}}
         \end{equation}
-        \remember{Eigenstates that correspond to different values of $n_{k}$ are not correlated} (the matrix element quantifying the ``interaction'' between them is identically zero).
+        \remember{Eigenstates that correspond to different values of $n_{k}$ are not correlated} (the matrix element quantifying the ``interaction'' between them is identically zero).    
 
     \subsection{Quantum integrable systems}
         Again, in analogy with classical physics, when $d=f$ independent quantum integrals of motion exist, the system is called \emph{integrable}.
-        The results of the previous section imply that in such a system, each state can be uniquely labelled with a set of $f$ quantum numbers that are eigenvalues of the $f$ integrals of motion.
-        The typical eigenstates of these operators form a basis for the Hamiltonian, which can be made diagonal in it.
+        The result of the previous section implies that in such a system, each state can be uniquely labelled with a set of $f$ quantum numbers that are eigenvalues of the $f$ integrals of motion.
+        The typical eigenstates of these operators form a basis for the Hamiltonian, in which the Hamiltonian has a diagonal form.
         Therefore, \remember{in quantum integrable systems, all the eigenstates are uncorrelated.}
+
+    \subsection{Einstein-Brillouin-Keller (EBK) quantization}
+        If a classical system is integrable, its Hamiltonian can be expressed in the \emph{action-angle coordinates} $(J_{j},\phi_{j}),j=1,\dotsc,f$ and is independent of the angles $\phi_{j}$, $H=H(\vector{J})$.
+        This implies that the classical motion is confined to $f$-dimensional tori in the phase space, and the classical dynamics is given by the Hamilton equations of motion
+        \begin{subequations}
+            \begin{align}
+                \derivative{J_{j}}{t}&=\partialderivative{H}{\phi_{j}}=0,\\
+                \derivative{\phi_{j}}{t}&=\partialderivative{H}{J_{j}}\equiv\omega_{j},
+            \end{align}                
+        \end{subequations}
+        with a simple solution
+        \begin{subequations}
+            \begin{align}
+                \phi_{j}(t)&=\omega_{j}t+\phi_{j}(0),\\
+                J_{j}(t)&=J_{j}(0)=\const.
+            \end{align}                
+        \end{subequations}
+        EBK then states that each of the action coordinates can be quantized separately,
+        \begin{equation}
+            J_{j}=\hbar n_{j}+a_{j},
+        \end{equation}
+        where $n_{j}\in\mathbb{N}$ is a quantum number and $a_{j}$ a real constant.
+        This result supports the conclusion of the previous section.
 
     \subsection{Nearest neighbour spacing distribution}
         This is one of the most used spectral statistics.
@@ -230,7 +259,7 @@ Lecture Notes on Quantum Chaos}
                 \underbrace{\text{Probability}\left(\text{no level in }I\right)}_{1-\int_{0}^{s}p(s')\d s'=\int_{s}^{\infty}p(s')\d s'},
         \end{equation}
         where $I=(0,s)$ is an interval spanning from $E=E_{0}=0$ to $E=E_{0}+s$ and $\d I=(s,s+\d s)$.
-        Number $p(s)\d s$ is the probability that we find the level neighbouring to $E_{0}$ at interval $\d s$.
+        Number $p(s)\d s$ is the probability that we find a level neighbouring to $E_{0}$ at interval $\d s$.
         We come to an integral equation\footnote{A separable Volterra integral equation of the $2^{\text{nd}}$ kind.} for $p(s)$,
         \begin{equation}
             p(s)=\mu(s)\int_{s}^{\infty}p(s')\d s'.
@@ -301,11 +330,11 @@ Lecture Notes on Quantum Chaos}
 
             Play a little with this simple model; you can, for example, use a rational number for $\alpha$ and test how sensitive the NNSD is to ``resonances'' in the spectrum caused by the commensurate box dimensions.
 
-            More details about this system are given in Ref.~\cite{Cas85}.
+            A detailed discussion of this system (concluding that the levels in the infinite well are, in fact, correlated) is given in Ref.~\cite{Cas85}.
         \end{task}
 
         \begin{solution}
-            A Python code with the solution is in the \href{https://github.com/PavelStransky/Chaos/python}{public GitHub repository of this project}.
+            A Python code with the solution is in the \href{https://github.com/PavelStransky/Chaos}{public GitHub repository of this project}.
             It consists of three files: 
             \begin{itemize}
                 \item 

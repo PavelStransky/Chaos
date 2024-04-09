@@ -70,7 +70,7 @@ def NNSDGOE(size=1000, polynomial_order=11):
     plot_nnsd(spacings, wigner, extraTitle=title)
 
 def NNSDStadium(size=1000, polynomial_order=7):
-    spectrum = _Stadium.stadium_energies(Ne=size, full=False)
+    spectrum = Stadium.stadium_energies(Ny=100, Ne=size, full=False)
     title = "Stadium"
 
     plot_level_density(spectrum, extraTitle=title)
@@ -87,4 +87,4 @@ def NNSDStadium(size=1000, polynomial_order=7):
 #NNSD3D()
 #NNSDGOE()
 
-NNSDStadium(size=1000)
+NNSDStadium(size=500)
