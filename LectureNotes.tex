@@ -888,6 +888,14 @@ Lecture Notes on Quantum Chaos}
         } and the volume of a quantum elementary ``cell'' $(2\pi\hbar)^{f}$.
         Since the smooth part does not depend on the dynamics, it cannot give any account of the system's chaoticity.
 
+        The oscillatory part carries information about the spectral correlations.
+        It is given by the \emph{Gutzwiller trace formula}~\cite{Gut90}
+        \begin{equation}
+            \label{eq:Gutzwiller}
+            \tilde{\rho}(E)=\sum_{p}\sum_{r=1}^{\infty}\frac{rT_{p}}{\sqrt{\norm{\det\left(\unit{1}-\matrix{M}_{p}\right)}}}\cos\left[\frac{1}{\hbar}r S_{p}(E)-\frac{\pi}{2}r\nu_{p}\right]
+        \end{equation}
+        where $p$ indexes all the simple periodic orbits of the system, $r$ specifies the number of repetitions, $T_{p}$ is the period of the orbit, $\matrix{M}_{p}$ is the stability (monodromy) matrix, $S_{p}(E)$ is the action of the orbit, and $\nu_{p}$ is a phase connected with the orbit (the \emph{Maslov index}).
+
         \subsubsection{Smooth level density of a potential well}
             The potential well is an important example of a simple integrable system.
             Suppose we have a particle moving in an infinite cuboid-like $f$ dimensional potential well (billiard)
