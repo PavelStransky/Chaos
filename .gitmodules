@@ -1,0 +1,3 @@
+[submodule "LaTeX_defs"]
+	path = LaTeX_defs
+	url = https://github.com/PavelStransky/LaTeX_defs

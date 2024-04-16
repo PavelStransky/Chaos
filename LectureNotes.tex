@@ -35,7 +35,14 @@
 \setlength{\headheight}{15pt}
 
 \pagestyle{fancy}
-\input{defs}
+\input{LaTeX_defs/defs}
+
+\def\error#1{{\color{red}{\bf{#1}}}}
+\def\trick#1{{\color{blue}#1}}
+\def\remember#1{{\color{ForestGreen}\bf{#1}}}
+
+\def\code#1{\textnormal{\texttt{#1}}}
+\def\file#1{\textnormal{\textbf{\texttt{#1}}}}
 
 \newtheoremstyle{spaced}
 {5pt}{5pt}{\itshape}{}{\bfseries}{:}{.5em}{}
@@ -198,7 +205,7 @@ Lecture Notes on Quantum Chaos}
             \end{align}                
         \end{subequations}
         are the so called \emph{quantum integrals of motion}.\footnote{
-            A common example of such integrals of motion are the angular momentum and parity, $J^{\pi}$.
+            A common example of such integrals of motion is the angular momentum and parity, $J^{\pi}$.
         }
         Their existence implies that there exists an orthonormal basis $\ket{n_{1},\dotsc,n_{d}}$ such that 
         \begin{equation}
