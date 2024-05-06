@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 def strech_spectrum(spectrum):
     """ Stretch the spectrum to get an exact average level density 1 """
     spectrum = (spectrum - spectrum[0]) / (spectrum[-1] - spectrum[0]) * (len(spectrum) - 1)
-    print(f"Range of streched energies: {spectrum[0]} - {spectrum[-1]}")
     return spectrum
 
 

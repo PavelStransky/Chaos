@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import box2D
+import box2D, box3D
 import statistics
 
 # from Box3D import Box3D
@@ -19,40 +19,37 @@ def NNSD2D(num_states=100000, a=1, b=np.sqrt(np.pi / 3)):
 
     title = f"2D box (a, b) = ({a}, {b})"
 
-    plots.level_density(spectrum, box2D.level_density, title=title)
-    plots.cummulative_level_density(spectrum, box2D.cummulative_level_density, title=title)
+    plots.level_density(spectrum, lambda x: box2D.level_density(x, a, b), title=title)
+    plots.cummulative_level_density(spectrum, lambda x: box2D.cummulative_level_density(x, a, b), title=title)
     plots.nnsd(spacings, statistics.poisson, title=title)
 
 
-def NNSD3D(a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) / 20), num_states=100000, polynomial_order=8):
-    box3D = Box3D(a, b, c)
-    spectrum = box3D.calculate_spectrum(num_states)
-    title = str(box3D)
+def NNSD3D(num_states=100000, a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) / 20), polynomial_order=8):
+    spectrum = box3D.spectrum(num_states)
 
-    plot_level_density(spectrum, box3D.level_density, extraTitle=title)
-    plot_cummulative_level_density(spectrum, box3D.cummulative_level_density, extraTitle=title)
-    plot_cummulative_level_density(spectrum, lambda x: box3D.cummulative_level_density(x) * len(spectrum) / box3D.cummulative_level_density(spectrum[-1]), extraTitle="Rescaled" + title)
+    title = f"3D box (a, b, c) = ({a}, {b}, {c})"
 
-    unfolded = box3D.cummulative_level_density(spectrum)
-    plot_level_density(unfolded, extraTitle="Unfolded (exact LD)" + title)
+    plots.level_density(spectrum, lambda x: box3D.level_density(x, a, b, c), title=title)
+    plots.cummulative_level_density(spectrum, lambda x: box3D.cummulative_level_density(x, a, b, c), title=title)
 
-    unfolded = strech_spectrum(unfolded)
-    plot_level_density(unfolded, extraTitle="Unfolded (exact LD) + Stretched" + title)
+    unfolded = box3D.cummulative_level_density(spectrum, a, b, c)
+    plots.level_density(unfolded, title="Unfolded (exact LD)" + title)
 
-    unfolded = strech_spectrum(spectrum)
-    spacings = level_spacing(unfolded)
+    unfolded = statistics.strech_spectrum(unfolded)
+    plots.level_density(unfolded, title="Unfolded (exact LD) + Stretched" + title)
 
-    plot_nnsd(spacings, poisson, extraTitle=title)
+    spacings = statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, statistics.poisson, title=title)
 
     # Polynomial unfolding
-    unfolded = polynomial_unfolding(spectrum, polynomial_order)
-    plot_level_density(unfolded, extraTitle=f"Unfolded ({polynomial_order} order polynomial)" + title)
+    unfolded = statistics.polynomial_unfolding(spectrum, polynomial_order)
+    plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
 
-    unfolded = strech_spectrum(unfolded)
-    plot_level_density(unfolded, extraTitle=f"Unfolded ({polynomial_order} order polynomial) + Stretched" + title)
+    unfolded = statistics.strech_spectrum(unfolded)
+    plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial) + Stretched" + title)
 
-    spacings = level_spacing(unfolded)
-    plot_nnsd(spacings, poisson, extraTitle=title)
+    spacings = statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, statistics.poisson, extraTitle=title)
 
 
 def NNSDGOE(size=1000, polynomial_order=11):
@@ -83,10 +80,10 @@ def NNSDStadium(size=1000, polynomial_order=7):
     spacings = level_spacing(unfolded)
     plot_nnsd(spacings, wigner, extraTitle=title)
 
+if __name__ == "__main__":
+    NNSD2D()
+    NNSD2D(a=1, b=7/4)
+    NNSD3D()
+    #NNSDGOE()
 
-NNSD2D()
-#NNSD2D(a=1, b=(np.sqrt(5)-1)/2)
-#NNSD3D()
-#NNSDGOE()
-
-#NNSDStadium(size=500)
+    #NNSDStadium(size=500)

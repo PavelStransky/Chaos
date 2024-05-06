@@ -1,6 +1,5 @@
-# Energy levels of 2D rectangular potential
+# Energy levels of the 2D rectangular potential
 # E = K [(n/a)^2 + (m/b)^2]
-# K = (pi hbar / (2 M))^2
 
 # Mean level density (given by the the Weyl formula)
 # rho = (2 a b M) / (pi hbar^2)
@@ -51,9 +50,10 @@ def spectrum(num_states, a=1, b=np.sqrt(np.pi / 3), hbar=1, M=1):
         hbar (float): reduced Planck constant (default: 1)
         M (float): mass of the particle (default: 1)
     """
-       
-    max_energy = 11 * num_states / (a * b * M / (2 * np.pi * hbar**2))
-    # 1.1 is a Pišvejc (Bulgarian) constant (to be on the safe side and have always slightly more levels than necessary)
+
+    # 1.1 is a Pišvejc (Bulgarian) constant 
+    # Estimate of the maximum energy by solving N(E) = num_states       
+    max_energy = 1.1 * num_states / (a * b * M / (2 * np.pi * hbar**2))
 
     K = dimensional_parameter(hbar, M)
 
