@@ -5,40 +5,47 @@ import matplotlib.pyplot as plt
 from scipy import sparse
 from scipy.sparse import linalg as sla
 
-def schrodinger2D(Vfun2D, params, Ne, E0=0.0, findpsi=False):
-    V, x, y = Vfun2D(params)        # Get the potential function
+import statistics, plots
+
+def schrodinger2D(shape, parameters, Ne, E0=0.0, findpsi=False):
+    V, x, y = shape(parameters)
+
     dx = x[1] - x[0]  
     dy = y[1] - y[0]
 
     Nx = len(x)
     Ny = len(y)
 
-    # Create the 2D Hamiltonian matrix
-    # First, the derivatives in the x direction.
-    # Note that instead of using arrays, we use sparse matrices
-    # in order to reduce computational resource consumption.
+    # Derivatives in the x direction
     Hx = sparse.lil_matrix(2 * np.eye(Nx))
     for i in range(Nx - 1):
         Hx[i, i + 1] = -1
         Hx[i + 1, i] = -1
     Hx = Hx / (dx ** 2)    # Next, the derivatives in the y direction.
+
+    # Derivatives in the y direction
     Hy = sparse.lil_matrix(2 * np.eye(Ny))
     for i in range(Ny - 1):
         Hy[i, i + 1] = -1
         Hy[i + 1, i] = -1
-    Hy = Hy / (dy ** 2)    # Combine both x and y Hilbert spaces using Kronecker products.
+    Hy = Hy / (dy ** 2)    
+    
+    # Combine both x and y Hilbert spaces using Kronecker products.
     Ix = sparse.lil_matrix(np.eye(Nx))
     Iy = sparse.lil_matrix(np.eye(Ny))
     H = sparse.kron(Iy, Hx) + sparse.kron(Hy, Ix)  
 
     # Re-convert to sparse matrix lil form.
-    H = H.tolil()    # And add the potential energy.
+    H = H.tolil()    
+    
+    # Add the potential energy.
     for i in range(Nx * Ny):
         H[i, i] = H[i, i] + V[i]    
 
-    # Convert to sparse matrix csc form, 
-    # and solve the eigenvalue problem
-    H = H.tocsc()  
+    # Convert to sparse matrix csc form, and solve the eigenvalue problem
+    H = H.tocsc()
+
+    # Solve the eigenvalue problem
     [evl, evt] = sla.eigs(H, k=Ne, sigma=E0)
             
     if findpsi == False:
@@ -95,7 +102,8 @@ def oneD_to_twoD(Nx, Ny, psi):
     return PSI
 
 
-def Vfun(params):
+def stadium_shape(params):
+    """ Potential shape for the stadium billiard. """
     r, l, v0, Ny, full = params
 
     ymin = 0
@@ -135,7 +143,7 @@ def Vfun(params):
     V = twoD_to_oneD(Nx, Ny, F) # Fold the 2D matrix to a 1D array.
     return V, x, y
    
-def stadium_energies(r=1, l=2, v0=1E6, Ny=250, Ne=1000, full=True):
+def stadium_energies(r=1, l=2, v0=1E6, Ny=100, Ne=1000, full=True):
     """
         r = stadium radius
         l = stadium length
@@ -146,9 +154,24 @@ def stadium_energies(r=1, l=2, v0=1E6, Ny=250, Ne=1000, full=True):
     """
 
     params = [r, l, v0, Ny, full]
-    H = schrodinger2D(Vfun, params, Ne, findpsi=False)    # Get eigen energies    
+    H = schrodinger2D(stadium_shape, params, Ne, findpsi=False)    # Get eigenenergies    
 
     return np.real(H)
 
 #stadium_wavefunctions_plot(1, 2, 1e6, 100)
 #stadium_energies()
+
+def demonstrate(size=1000, polynomial_order=7):
+    energies = stadium_energies(Ny=200, Ne=size, full=False)
+    title = "Stadium"
+
+    plots.level_density(energies, title=title)
+
+    unfolded = statistics.polynomial_unfolding(energies, polynomial_order)
+    plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
+
+    spacings = statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, statistics.wigner, title=title)
+
+if __name__ == "__main__":
+    demonstrate(2000)

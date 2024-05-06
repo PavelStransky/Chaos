@@ -6,6 +6,8 @@
 
 import numpy as np
 
+import statistics, plots
+
 def dimensional_parameter(hbar=1, M=1):
     """ Calculates the dimensional parameter (pi hbar)^2 / (2 M))
         
@@ -86,3 +88,28 @@ def spectrum(num_states, a=1, b=np.sqrt(np.pi / 3), c=np.sqrt(np.exp(3 / 20)), h
 
     return spectrum
 
+def demonstrate(num_states=100000, a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) / 20), polynomial_order=8):
+    energies = spectrum(num_states)
+
+    title = f"3D box (a, b, c) = ({a}, {b}, {c})"
+
+    plots.level_density(energies, lambda x: level_density(x, a, b, c), title=title)
+    plots.cummulative_level_density(energies, lambda x: cummulative_level_density(x, a, b, c), title=title)
+
+    # Unfolding using the Weyl formula
+    unfolded = cummulative_level_density(energies, a, b, c)
+    plots.level_density(unfolded, title="Unfolded (exact LD)" + title)
+
+    spacings = statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, statistics.poisson, title=title)
+
+    # Polynomial unfolding
+    unfolded = statistics.polynomial_unfolding(energies, polynomial_order)
+    plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
+
+    spacings = statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, statistics.poisson, title=title)
+
+
+if __name__ == "__main__":
+    demonstrate()

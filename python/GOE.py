@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 
 import time
 
+import statistics, plots
+
 generator = np.random.default_rng()
 
 def generate_goe(size, sigma=1):
@@ -42,3 +44,21 @@ def calculate_spectrum(size, num_matrices=1, sigma=1):
 
     spectrum = np.array(ev).flatten()
     return np.array(sorted(spectrum))
+
+
+def demonstrate(size=1000):
+    energies = calculate_spectrum(size)
+
+    title = f"GOE (size = {size})"
+
+    plots.level_density(energies, title=title)
+
+    for polynomial_order in range(1, 20, 2):
+        unfolded = statistics.polynomial_unfolding(energies, polynomial_order)
+        plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
+
+        spacings = statistics.level_spacing(unfolded)
+        plots.nnsd(spacings, statistics.wigner, title=title)
+
+if __name__ == "__main__":
+    demonstrate(10000)
