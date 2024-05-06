@@ -6,7 +6,6 @@ from scipy import sparse
 from scipy.sparse import linalg as sla
 
 def schrodinger2D(Vfun2D, params, Ne, E0=0.0, findpsi=False):
-
     V, x, y = Vfun2D(params)        # Get the potential function
     dx = x[1] - x[0]  
     dy = y[1] - y[0]

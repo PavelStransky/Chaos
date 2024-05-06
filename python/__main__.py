@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-import box2D, box3D
+import box2D, box3D, goe
 import statistics
 
 # from Box3D import Box3D
@@ -14,7 +14,7 @@ import plots
 def NNSD2D(num_states=100000, a=1, b=np.sqrt(np.pi / 3)):
     spectrum = box2D.spectrum(num_states, a, b)
 
-    unfolded = statistics.strech_spectrum(spectrum)
+    unfolded = box2D.cummulative_level_density(spectrum, a, b)
     spacings = statistics.level_spacing(unfolded)
 
     title = f"2D box (a, b) = ({a}, {b})"
@@ -32,11 +32,9 @@ def NNSD3D(num_states=100000, a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) /
     plots.level_density(spectrum, lambda x: box3D.level_density(x, a, b, c), title=title)
     plots.cummulative_level_density(spectrum, lambda x: box3D.cummulative_level_density(x, a, b, c), title=title)
 
+    # Unfolding using the Weyl formula
     unfolded = box3D.cummulative_level_density(spectrum, a, b, c)
     plots.level_density(unfolded, title="Unfolded (exact LD)" + title)
-
-    unfolded = statistics.strech_spectrum(unfolded)
-    plots.level_density(unfolded, title="Unfolded (exact LD) + Stretched" + title)
 
     spacings = statistics.level_spacing(unfolded)
     plots.nnsd(spacings, statistics.poisson, title=title)
@@ -45,28 +43,24 @@ def NNSD3D(num_states=100000, a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) /
     unfolded = statistics.polynomial_unfolding(spectrum, polynomial_order)
     plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
 
-    unfolded = statistics.strech_spectrum(unfolded)
-    plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial) + Stretched" + title)
-
     spacings = statistics.level_spacing(unfolded)
-    plots.nnsd(spacings, statistics.poisson, extraTitle=title)
+    plots.nnsd(spacings, statistics.poisson, title=title)
 
 
-def NNSDGOE(size=1000, polynomial_order=11):
-    goe = GOE(size, -1)
-    title = str(goe)
+def NNSDGOE(size=1000):
+    spectrum = goe.calculate_spectrum(size)
 
-    spectrum = goe.calculate_spectrum()
-    plot_level_density(spectrum, extraTitle=title)
+    title = f"GOE (size = {size})"
 
-    unfolded = polynomial_unfolding(spectrum, polynomial_order)
-    plot_level_density(unfolded, extraTitle=f"Unfolded ({polynomial_order} order polynomial)" + title)
+    plots.level_density(spectrum, title=title)
 
-    unfolded = strech_spectrum(unfolded)
-    plot_level_density(unfolded, extraTitle=f"Unfolded ({polynomial_order} order polynomial) + Stretched" + title)
+    for polynomial_order in range(1, 20, 2):
+        unfolded = statistics.polynomial_unfolding(spectrum, polynomial_order)
+        plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
 
-    spacings = level_spacing(unfolded)
-    plot_nnsd(spacings, wigner, extraTitle=title)
+        spacings = statistics.level_spacing(unfolded)
+        plots.nnsd(spacings, statistics.wigner, title=title)
+
 
 def NNSDStadium(size=1000, polynomial_order=7):
     spectrum = Stadium.stadium_energies(Ny=100, Ne=size, full=False)
@@ -84,6 +78,6 @@ if __name__ == "__main__":
     NNSD2D()
     NNSD2D(a=1, b=7/4)
     NNSD3D()
-    #NNSDGOE()
+    NNSDGOE(size=10000)
 
-    #NNSDStadium(size=500)
+    # NNSDStadium(size=500)
