@@ -1,14 +1,22 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+import time
+
 generator = np.random.default_rng()
 
 class GOE:
     def __init__(this, size, sigma=1):
+        """ Constructor of the GOE class.
+            Parameters:
+            size (int): size of the matrix
+            sigma (float): standard deviation of the Gaussian distribution 
+            (if negative, the deviation is calculated so that the levels lie in interval (-1, 1))
+        """
         this.size = size
         this.sigma = sigma
 
-        if this.sigma <= 0:         # Special normalization (levels in the range from -1 to +1)
+        if this.sigma <= 0:         # Special normalization 
             this.sigma = 0.5 / np.sqrt(this.size) 
 
     def __str__(this):
@@ -31,3 +39,4 @@ class GOE:
 
         spectrum = np.array(ev).flatten()
         return np.array(sorted(spectrum))
+    

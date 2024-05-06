@@ -1,26 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from Box2D import Box2D
-from Box3D import Box3D
-from GOE import GOE
-import Stadium
+import box2D
+import statistics
 
-from Statistics import *
-from Plots import *
+# from Box3D import Box3D
+# from GOE import GOE
+# import Stadium
 
-def NNSD2D(a=1, b=np.sqrt(np.pi / 3), num_states=100000):
-    box2D = Box2D(a, b)
-    spectrum = box2D.calculate_spectrum(num_states)
-    title = str(box2D)
+import statistics
+import plots
 
-    unfolded = strech_spectrum(spectrum)
-    spacings = level_spacing(unfolded)
+def NNSD2D(num_states=100000, a=1, b=np.sqrt(np.pi / 3)):
+    spectrum = box2D.spectrum(num_states, a, b)
 
-    plot_level_density(spectrum, box2D.level_density, extraTitle=title)
-    plot_cummulative_level_density(spectrum, box2D.cummulative_level_density, extraTitle=title)
+    unfolded = statistics.strech_spectrum(spectrum)
+    spacings = statistics.level_spacing(unfolded)
 
-    plot_nnsd(spacings, poisson, extraTitle=title)
+    title = f"2D box (a, b) = ({a}, {b})"
+
+    plots.level_density(spectrum, box2D.level_density, title=title)
+    plots.cummulative_level_density(spectrum, box2D.cummulative_level_density, title=title)
+    plots.nnsd(spacings, statistics.poisson, title=title)
 
 
 def NNSD3D(a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) / 20), num_states=100000, polynomial_order=8):
@@ -38,6 +39,7 @@ def NNSD3D(a=1, b=np.sqrt(np.pi / 3), c = np.sqrt(np.exp(3) / 20), num_states=10
     unfolded = strech_spectrum(unfolded)
     plot_level_density(unfolded, extraTitle="Unfolded (exact LD) + Stretched" + title)
 
+    unfolded = strech_spectrum(spectrum)
     spacings = level_spacing(unfolded)
 
     plot_nnsd(spacings, poisson, extraTitle=title)
@@ -82,9 +84,9 @@ def NNSDStadium(size=1000, polynomial_order=7):
     plot_nnsd(spacings, wigner, extraTitle=title)
 
 
-#NNSD2D()
-#NNSD2D(a=1, b=1.5)
+NNSD2D()
+#NNSD2D(a=1, b=(np.sqrt(5)-1)/2)
 #NNSD3D()
 #NNSDGOE()
 
-NNSDStadium(size=500)
+#NNSDStadium(size=500)

@@ -3,15 +3,17 @@ import matplotlib.pyplot as plt
 
 
 def strech_spectrum(spectrum):
-    """ Norm the spectrum to get whole average level density 1 """
-    return (spectrum - spectrum[0]) / (spectrum[-1] - spectrum[0]) * (len(spectrum) - 1)
+    """ Stretch the spectrum to get an exact average level density 1 """
+    spectrum = (spectrum - spectrum[0]) / (spectrum[-1] - spectrum[0]) * (len(spectrum) - 1)
+    print(f"Range of streched energies: {spectrum[0]} - {spectrum[-1]}")
+    return spectrum
 
 
 def level_spacing(spectrum, shift=1):
     """ Calculates the spacing between nearest levels.
 
-        Arguments:
-        shift -- 1 for the nearest neigbour spacing, 2 for the next-to-nearest neigbour spacing etc.
+        Parameters:
+        shift: 1 for the nearest neigbour spacing, 2 for the next-to-nearest neigbour spacing etc (default: 1)
      """
     result = np.roll(spectrum, -shift) - spectrum
     return result[:-shift]
