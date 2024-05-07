@@ -342,17 +342,16 @@ Lecture Notes on Quantum Chaos}
 
         \begin{solution}
             A Python code with the solution is in the \href{https://github.com/PavelStransky/Chaos}{public GitHub repository of this project}.
-            It consists of three files: 
+            It consists of these files: 
             \begin{itemize}
                 \item 
-                    \file{Box2D.py}: A file with the model specification. 
-                    It contains functions to calculate and renormalise the spectrum to obtain unit average level density.
+                    \file{box2D.py}: A file with the model specification. 
+                    It contains functions to calculate the energy spectrum and the smooth part of the level density.
+
                 \item
-                    \file{Statistics.py}: Functions to plot histograms, compare numerical distributions with exact ones etc.
-                    Common for all (future) models.
-                \item
-                    \file{\_\_main\_\_.py}: The main file to run and to obtain the results.
-                    You can choose a model and specify its parameters here.
+                    \file{statistics.py}: Functions to unfold the spectrum (more about the unfolding in Section~\ref{sec:Unfolding}) and obtain unit average level density; functions to calculate the nearest neighbour spacing distribution of the unfolded spectrum and the Poisson and Wigner distribution functions.
+                \item                    
+                    \file{plots.py}: Functions that plot histograms and compare numerically obtained distributions with exact ones.
             \end{itemize}
             The results (level density and nearest neighbour spacing distribution) are displayed in Figure~\ref{fig:2Dbox}.
             There are three configurations:
