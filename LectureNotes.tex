@@ -14,6 +14,10 @@
 \usepackage[subrefformat=simple,labelformat=simple]{subcaption} % Instead of subfigure
 %\usepackage{showlabels}
 
+\usepackage[sorting=none,style=phys]{biblatex}
+\addbibresource{S:/Fyzika/Bibliography/References.bib}
+%\addbibresource{References.bib}
+
 \hypersetup{
 	pdftitle={Classical and Quantum Chaos},
 	pdfauthor={Pavel Stránský},
@@ -82,24 +86,24 @@ Lecture Notes on Quantum Chaos}
 
 \section{Literature}
 \begin{itemize}
-    \item \cite{Gut90}~Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990)
+    \item \cite{Gutzwiller1990}~Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990)
         \begin{itemize}
             \item Classical monography about chaos in physics.
             \item Profound physical and mathematical discussion.
             \item Sometimes nonstandard notation.
         \end{itemize}
 
-    \item \cite{Haa10}~Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010)
+    \item \cite{Haake2010}~Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010)
         \begin{itemize}
             \item Up-to-date topics, including chaotic dissipative systems and supersymmetric approaches.
         \end{itemize}
 
-    \item \cite{Boh89}~Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989
+    \item \cite{Bohigas1991}~Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989
         \begin{itemize}
             \item Brief and concise notes on the basics of quantum chaos.
         \end{itemize}
 
-    \item \cite{Meh04}~Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
+    \item \cite{Mehta2004}~Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
         \begin{itemize}
             \item Everything you always wanted to know about random matrices (and quantum chaos is from a big part about random matrices).
             \item \dots~and probably even didn't want to know.
@@ -177,9 +181,9 @@ Lecture Notes on Quantum Chaos}
                         \item The most fundamental object in quantum mechanics is the energy spectrum.
                         \item Study of specific statistical properties of quantum levels, especially the correlations between them.
                         It turns out that some simple properties of the spectrum differ significantly if the system is classically chaotic or integrable.
-                        \item The most important mathematical tool here is the \remember{Random matrix theory}~\cite{Meh04}.
-                        \item Spectral correlations are sometimes even used to define chaos in quantum mechanics.How\-ever, the connection between this definition and the ones based on semiclassical approaches is often loose; therefore, Michael Berry proposes to use the term Quantum Chaology instead of Quantum Chaos~\cite{Ber89}.
-                        \item The mostly cited paper conjecturing a connection between classical chaos and correlations in quantum spectra is the one by Bohigas, Giannoni and Schmit~\cite{Boh84}.
+                        \item The most important mathematical tool here is the \remember{Random matrix theory}~\cite{Mehta2004}.
+                        \item Spectral correlations are sometimes even used to define chaos in quantum mechanics.How\-ever, the connection between this definition and the ones based on semiclassical approaches is often loose; therefore, Michael Berry proposes to use the term Quantum Chaology instead of Quantum Chaos~\cite{Berry1989}.
+                        \item The mostly cited paper conjecturing a connection between classical chaos and correlations in quantum spectra is the one by Bohigas, Giannoni and Schmit~\cite{Bohigas1984}.
                     \end{itemize}
                     This will be the most important part of this introductory course.
         \end{enumerate}
@@ -337,7 +341,7 @@ Lecture Notes on Quantum Chaos}
 
             Play a little with this simple model; you can, for example, use a rational number for $\alpha$ and test how sensitive the NNSD is to ``resonances'' in the spectrum caused by the commensurate box dimensions.
 
-            A detailed discussion of this system (concluding that the levels in the infinite well are, in fact, correlated) is given in Ref.~\cite{Cas85}.
+            A detailed discussion of this system (concluding that the levels in the infinite well are, in fact, correlated) is given in Ref.~\cite{Casati1985}.
         \end{task}
 
         \begin{solution}
@@ -403,12 +407,12 @@ Lecture Notes on Quantum Chaos}
 
 \section{Chaotic systems}
     Here only a very brief overview of the history of quantum chaos is sketched.
-    For more details, I strongly recommend reading the first chapter of Mehta's monography~\cite{Meh04}.
+    For more details, I strongly recommend reading the first chapter of Mehta's monography~\cite{Mehta2004}.
 
     \subsection{Wigner surmise}\label{sec:Wigner}
         The field of quantum chaos started developing with the work of Eugene Wigner in the 1950s. 
         At that time, a lack of close states was observed in high-lying slow nuclear resonances.        
-        At first, it was being explained by imperfect measuring techniques, but then Wigner~\cite{Wig51,Wig55,Wig57} proposed and succeeded in using the Random Matrix Theory (RMT) to describe this suspicious behaviour of the resonances, and he formulated the so-called
+        At first, it was being explained by imperfect measuring techniques, but then Wigner~\cite{Wigner1951,Wigner1955,Wigner1957} proposed and succeeded in using the Random Matrix Theory (RMT) to describe this suspicious behaviour of the resonances, and he formulated the so-called
         \begin{theorem}
             {\bf (Wigner surmise)}
             Suppose we have a complicated and complex system with an (often high) unknown number of degrees of freedom (such as a highly excited atomic nucleus\footnote{
@@ -430,11 +434,11 @@ Lecture Notes on Quantum Chaos}
         \subsection{Bohigas conjecture}
         In the beginning, the theory of quantum matrices was just a tool to study the statistical spectral properties of many-body systems under unknown interactions. 
         In contrast, quantum counterparts of classically chaotic systems were studied by semiclassical methods in systems with only a few degrees of freedom.
-        But then, in 1984, Bohigas, Giannoni and Schmit published a ground-breaking paper~\cite{Boh84} stating:
+        But then, in 1984, Bohigas, Giannoni and Schmit published a ground-breaking paper~\cite{Bohigas1984} stating:
         \begin{theorem}
             {\bf (Bohigas (-Giannoni-Schmit) conjecture)}
             \remember{All quantum systems whose classical analogues are chaotic exhibit the same spectral fluctuation properties as predicted by the theory of random matrices.}
-            On the contrary, quantum systems with stable classical analogues (not necessarily integrable) have uncorrelated energy levels.
+            On the contrary, quantum systems with stable classical analogues (not necessarily integrable) have uncorrelated energy levels~\cite{Berry1997}.
         \end{theorem}
         This paper established the field that is since then called quantum chaos.
 
@@ -449,10 +453,10 @@ Lecture Notes on Quantum Chaos}
                             \supset\boxed{\text{Kolmogorov ($K$-)}}
                             \supset\boxed{\text{Bernoulli ($B$-)}}
                     \end{equation*}
-                    The complete discussion of this classification is beyond the scope of this lecture (and it belongs to the area of classical chaos theory); you can find it in~\cite{Sin77}.
+                    The complete discussion of this classification is beyond the scope of this lecture (and it belongs to the area of classical chaos theory); you can find it in~\cite{Sinaj1977}.
                     It has been proved, though, that mixing at the classical level is sufficient to generate random matrix statistics.
                 } 
-                However, there is a vast list of numerical studies based on a wide variety of systems that support its validity (but there are also several counter-examples of systems that are classically regular but have random-matrix-like quantum spectrum,\footnote{For example the Šeba's billiard: a circular billiard with a $\delta$-function sitting in the middle.} and vice versa).
+                However, there is a vast list of numerical studies based on a wide variety of systems that support its validity (but there are also several counter-examples of systems that are classically regular but have random-matrix-like quantum spectrum,\footnote{For example the Šeba's billiard~\cite{Seba1990}: a circular billiard with a $\delta$-function sitting in the middle.} and vice versa).
         \end{enumerate}
 
 \section{Gaussian random matrix ensembles}
@@ -461,9 +465,9 @@ Lecture Notes on Quantum Chaos}
     What can we say about correlations among the eigenlevels and eigenvectors?
     
     As with many theories, their pioneers are often forgotten and scarcely mentioned. 
-    The development of the random matrix theory began in the 1920s~\cite{Wis28} but did not draw much attention then.
+    The development of the random matrix theory began in the 1920s~\cite{Wishart1928} but did not draw much attention then.
     The theory became more popular when Wigner formulated his surmise, see Section~\ref{sec:Wigner},
-    but mathematically rigorous foundations of the so-called Random Matrix Theory (RMT) were established in a series of beautiful papers by Dyson~\cite{Dys62}\footnote{
+    but mathematically rigorous foundations of the so-called Random Matrix Theory (RMT) were established in a series of beautiful papers by Dyson~\cite{Dyson1962,Dyson1962a,Dyson1962b}\footnote{
         Freeman John Dyson, who passed away in 2020, was an author or co-author of many seminal ideas and theorems in mathematics and physics. However, only a few are named after him, probably due to his modesty (the most famous is the Dyson series, leading to Feynman-Dyson diagrams). As a curiosity, he became a professor without having finished his PhD studies.
         He is a laureate of the Templeton Prize.
     }
@@ -521,7 +525,7 @@ Lecture Notes on Quantum Chaos}
             The matrix $\matrix{H}$ is quaternionic Hermitian and has $N(2N-1)$ independent components.\footnote{Quaternionic $N\times N$ matrix can be modelled by $2N\times 2N$ complex matrices.}
             This is the least common case to encounter.
             Systems in this class have half-integer spins and exhibit Kramers's degeneracy.
-            Note that the first experiment to obtain the $\ensemble{GSE}$-like spectrum was performed quite recently~\cite{Reh16} using specially designed quantum graphs.
+            Note that the first experiment to obtain the $\ensemble{GSE}$-like spectrum was performed quite recently~\cite{Rehemanjiang2016} using specially designed quantum graphs.
     \end{enumerate} 
     Index $\beta$ is called the \remember{Dyson number}.
     Examples of spectra of matrices belonging to these three ensembles are given in Figure~\ref{fig:Ensembles}(a). 
@@ -529,10 +533,10 @@ Lecture Notes on Quantum Chaos}
     \subsection{Other ensembles}
     If we weaken any of the conditions of Theorem~\ref{th:GE}, we may extend the number of universality classes and introduce new ensembles:
     \begin{itemize}
-        \item Altland-Zirnbauer universality classes~\cite{Alt97} (7 additional classes by relaxing Equation~\eqref{eq:PHInvariance}, taking into account particle-hole symmetry or chiral symmetry).
+        \item Altland-Zirnbauer universality classes~\cite{Altland1997} (7 additional classes by relaxing Equation~\eqref{eq:PHInvariance}, taking into account particle-hole symmetry or chiral symmetry).
         \item Random unitary matrices (Gaussian Circular Ensembles) for modelling the scattering $S$-matrix instead of the Hamiltonian matrix.
         \item Random band matrices.
-        \item Ginibre ensembles~\cite{Gin65} (condition~\eqref{eq:PHInvariance} completely disregarded).
+        \item Ginibre ensembles~\cite{Ginibre1965} (condition~\eqref{eq:PHInvariance} completely disregarded).
     \end{itemize} 
     In these notes, we shall restrict ourselves on the Gaussian ensembles only.
 
@@ -750,7 +754,7 @@ Lecture Notes on Quantum Chaos}
                     (c) Absolute deviation of $p_{w}(s)$ for $2\times2$ matrices from the NNSD for infinite-size matrices.
                     The most significant deviation is observed for $\ensemble{GOE}$ at $s\approx0.4$.
                     However, the deviation does not exceed $4\%$.
-                    This panel is taken from~\cite{Haa10}.
+                    This panel is taken from~\cite{Haake2010}.
                 }	
                 \label{fig:Ensembles}
             \end{figure}
@@ -795,7 +799,7 @@ Lecture Notes on Quantum Chaos}
             This integral requires relatively advanced mathematical tools.
             The most straightforward way to perform it is via Grassmann integration.
         }
-        converges to the \remember{Wigner semicircle law}~\cite{Wig57}
+        converges to the \remember{Wigner semicircle law}~\cite{Wigner1957}
         \begin{equation}
             \label{eq:Semicircle}
             \boxed{
@@ -875,7 +879,7 @@ Lecture Notes on Quantum Chaos}
         \end{equation}  
         The smooth part gives an average number of levels in an interval $\d E$.        
         It is system dependent, expressed by the semiclassical \remember{Weyl fomula}\footnote{
-            It is worth mentioning a related work by Mark Kac, discussing general properties of a vibrational spectrum of a ``drum'': a membrane of an arbitrary shape with a fixed boundary~\cite{Kac66}.
+            It is worth mentioning a related work by Mark Kac, discussing general properties of a vibrational spectrum of a ``drum'': a membrane of an arbitrary shape with a fixed boundary~\cite{Kac1966}.
         }
         \begin{equation}
             \label{eq:Smooth}
@@ -888,7 +892,7 @@ Lecture Notes on Quantum Chaos}
         Since the smooth part does not depend on the dynamics, it cannot give any account of the system's chaoticity.
 
         The oscillatory part carries information about the spectral correlations.
-        It is given by the \emph{Gutzwiller trace formula}~\cite{Gut90}
+        It is given by the \emph{Gutzwiller trace formula}~\cite{Gutzwiller1990}
         \begin{equation}
             \label{eq:Gutzwiller}
             \tilde{\rho}(E)=\sum_{p}\sum_{r=1}^{\infty}\frac{rT_{p}}{\sqrt{\norm{\det\left(\unit{1}-\matrix{M}_{p}\right)}}}\cos\left[\frac{1}{\hbar}r S_{p}(E)-\frac{\pi}{2}r\nu_{p}\right]
@@ -1013,9 +1017,9 @@ Lecture Notes on Quantum Chaos}
         In the classical physics it means that at given energy $E$ there are islands in the phase space with regular dynamics (zero Lyapunov exponent) surrounded by chaotic sea (positive Lyapunov exponent).
         Hence we cannot expect purely Poissonian or Gaussian-Ensemble-like level statistics in the quantum mechanics, but some kind of mixture of both.
 
-        It has been conjectured~\cite{Per73} (\emph{Percival conjecture}) that the parts of the quantum spectrum that correspond to the remnants of classical tori (regions with classical stable dynamics) are statistically independent of the parts related with the chaotic classical regions, so that the energy level sequence is a mixture of levels with Wigner and with Poissonian statistics.
-        Mathematically it is described by the \emph{Berry-Robnik distribution}~\cite{Ber84}.
-        However, in practice, it is much more common to use the \emph{Brody distribution}~\cite{Bro73}, which is, in fact, an artificial distribution obtained by assuming level repulsion
+        It has been conjectured~\cite{Percival1973} (\emph{Percival conjecture}) that the parts of the quantum spectrum that correspond to the remnants of classical tori (regions with classical stable dynamics) are statistically independent of the parts related with the chaotic classical regions, so that the energy level sequence is a mixture of levels with Wigner and with Poissonian statistics.
+        Mathematically it is described by the \emph{Berry-Robnik distribution}~\cite{Berry1984a}.
+        However, in practice, it is much more common to use the \emph{Brody distribution}~\cite{Brody1973,Brody1981}, which is, in fact, an artificial distribution obtained by assuming level repulsion
         \begin{equation}
             \mu(s)=s^{\omega}
         \end{equation}
@@ -1042,7 +1046,7 @@ Lecture Notes on Quantum Chaos}
         \end{figure}        
 
         Despite having known conflicts with theoretical predictions for the NNSD behaviour, Brody distribution is highly successful and often gives better estimate of the degree of system's chaoticity than other more firmly founded theoretical distributions.\footnote{
-            Apart from the Berry-Robnik distribution, there is also Izrailev distribution~\cite{Izr89}, Caurier-Grammaticos-Ramani distribution and Lenz-Haake distribution on the market.
+            Apart from the Berry-Robnik distribution, there is also Izrailev distribution~\cite{Izrailev1989}, Caurier-Grammaticos-Ramani distribution and Lenz-Haake distribution on the market.
             The last two have been constructed for $2\times2$ matrices only.
             The main difference between various distributions is in the form of chaotic perturbation they assume.
         }
@@ -1060,7 +1064,7 @@ Lecture Notes on Quantum Chaos}
                 =\frac{1}{L}\left\langle\min_{a,b}\int_{e_{0}-\frac{L}{2}}^{E_{0}+\frac{L}{2}}\left[\overline{N}(e)-ae-b\right]^{2}\d e\right\rangle,
             \end{equation}
             where $\langle\bullet\rangle$ denotes averaging over the ensemble (it is also possible to average over $E_{0}$ if the dynamics depends weakly on the energy).
-            For discrete set of unfolded levels $e_{j}$ there exists a practical formula to calculate $\Delta_{3}$~\cite{Boh75},
+            For discrete set of unfolded levels $e_{j}$ there exists a practical formula to calculate $\Delta_{3}$~\cite{Bohigas1975},
             \begin{align}
                 \Delta_{3}(L)
                     &=\frac{n^{2}}{16}-\frac{1}{L^{2}}\left[\sum_{j=1}^{n}\tilde{e}_{j}\right]^{2}+\frac{3n}{2L^{2}}\sum_{j=1}^{n}\tilde{e}_{j}^{2}-\frac{3}{L^{4}}\left[\sum_{j=1}^{n}\tilde{e}_{j}^{2}\right]^{2}+\frac{1}{L}\left[\sum_{j=1}^{n}\left(n-2j+1\right)\tilde{e}_{j}\right],\\
@@ -1072,7 +1076,7 @@ Lecture Notes on Quantum Chaos}
                 \Delta_{3}(L)=\left\{\begin{array}{ll}
                     \frac{1}{12} & \text{for equidistant spectrum},\\
                     \frac{L}{15} & \text{for integrable (Poissonian) spectrum},\\
-                    \frac{1}{\pi^{2}\beta}\ln L+c_{\beta}+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
+                    \frac{1}{\pi^{2}\beta}\left(\ln L+c_{\beta}\right)+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
                 \end{array}\right.
                 \label{eq:Delta3}
             \end{equation}
@@ -1093,7 +1097,7 @@ Lecture Notes on Quantum Chaos}
             \begin{equation}
                 \sigma^{2}(E_{0};L)
                     =\left\langle\left[\#(E_{0};L)-L\right]^{2}\right\rangle
-                    =\left\langle\left[\overline{N}\left(E_{0}+\frac{L}{2}\right)-\overline{N}\left(E_{0}-\frac{L}{2}\right)-L\right]^{2}\right\rangle,
+                    =\left\langle\left[N\left(E_{0}+\frac{L}{2}\right)-N\left(E_{0}-\frac{L}{2}\right)-L\right]^{2}\right\rangle,
                 \label{eq:Sigma2}
             \end{equation}  
             where $\#(E_{0};L)$ is the number of levels on interval $[E_{0}-L/2,E_{0}+L/2]$.
@@ -1105,7 +1109,7 @@ Lecture Notes on Quantum Chaos}
                 \Sigma^{2}(L)=\left\{\begin{array}{ll}
                     0 & \text{for equidistant spectrum},\\
                     L & \text{for integrable (Poissonian) spectrum},\\
-                    \frac{2}{\pi^{2}\beta}\ln L+d_{\beta}+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
+                    \frac{2}{\pi^{2}\beta}\left(\ln L+d_{\beta}\right)+\mathcal{O}(L^{-1}) & \text{for spectrum of Gaussian random matrices},
                 \end{array}\right.
             \end{equation}
             where
@@ -1141,37 +1145,39 @@ Lecture Notes on Quantum Chaos}
         \end{align}
     \end{subequations}
 
-\begin{thebibliography}{99}
-    \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
-    \bibitem{Haa10} Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010).
-    \bibitem{Boh89} Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989.
-    \bibitem{Meh04} Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
-    \bibitem{Wimberger2023} Sandro Wimberger, {\it Nonlinear Dynamics and Quantum Chaos. An Introduction} (Springer 2023).
-    \bibitem{Ber89} Michael Berry, {\it Quantum Chaology, Not Quantum Chaos}, \href{https://iopscience.iop.org/article/10.1088/0031-8949/40/3/013}{Physica Scripta {\bf 40}, 335 (1989)}.
-    \bibitem{Boh84} Oriol Bohigas, Marie-Joya Giannoni, Carles Schmit, {\it Characterization of chaotic quantum spectra and universality of level fluctuation laws}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.1
-    }{Physical Review Letters {\bf 52}, 1 (1984)}.
-    \bibitem{Cas85} Giulio Casati, Boris V. Chirikov, Italo Guarneri, {\it Energy-Level Statistics of Integrable Quantum Systems}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1350}{Physical Review Letters {\bf 54}, 1350 (1985)}.
-    \bibitem{Wig51} Eugene Wigner, {\it On the statistical distribution of the widths and spacings of nuclear resonance levels}, Proceedings of the Cambridge Philosophical Society {\bf 47}, 790 (1951).
-    \bibitem{Wig55} Eugene Wigner, {\it Characteristic vectors of bordered matrices with many dimensions}, \href{https://www.jstor.org/stable/1970079}{Annals of Mathematics {\bf 62}, 548 (1955)}.
-    \bibitem{Wig57} Eugene Wigner, {\it Statistial properties of real symmetric matrices with infinite dimensions}, Canadian Mathematical Congress Proceedings, p. 174 (University of Toronto Press, 1957).
-    \bibitem{Sin77} Yakov Grigorevich Sinai, {\it Introduction to Ergodic Theory}, Mathematical Notes (Book 18) (Princeton University Press, 1977).
-    \bibitem{Wis28} John Wishart, {\it The generalized product moment distribution in samples from a normal multivariate population}, \href{https://academic.oup.com/biomet/article-abstract/20A/1-2/32/204365}{Biometrica A {\bf 20}, 32 (1928)}.
-    \bibitem{Dys62} Freeman John Dyson, {\it Statistical theory of the energy levels of complex systems I--III}, Journal of Mathematical Physics {\bf 3}, \{\href{https://aip.scitation.org/doi/10.1063/1.1703773}{140}, \href{https://aip.scitation.org/doi/10.1063/1.1703774}{157}, \href{https://aip.scitation.org/doi/10.1063/1.1703775}{166}\} (1962).
-    \bibitem{Reh16} A. Rehemanjiang, M. Allgaier, C.H. Joyner, S. Müller, M. Sieber, U. Kuhl, Hans-Jürgen Stöckmann, {\it Microwave realization of the Gaussian Symplectic Ensemble}, \href{https://link.aps.org/doi/10.1103/PhysRevLett.117.064101}{Physical Review Letters {\bf 117}, 064101 (2016).}
-    \bibitem{Alt97} Alexander Altland, Martin R. Zirnbauer, {\it Nonstandard symmetry classes in mesoscopic normal-superconducting hybrid structures}, \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.1142}{Physical Review B {\bf 55}, 1142 (1997)}.
-    \bibitem{Gin65} Jean Ginibre, {\it Statistical Ensembles of Comples, Quaternion, and Real Matrices}, \href{https://aip.scitation.org/doi/10.1063/1.1704292}{Journal of Mathematical Physics {\bf 6}, 440 (1965)}.
-    \bibitem{Kac66} Mark Kac, {\it Can One Hear the Shape of a Drum?} \href{https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/MarkKac.pdf}{American Mathematical Monthly {\bf 73}, 16 (1966)}.
-    \bibitem{Per73} Ian Colin Percival, {\it Regular and irregular spectra}, \href{https://iopscience.iop.org/article/10.1088/0022-3700/6/9/002/pdf}{Journal of Physics B: Atomic and Molecular Physics {\bf 6}, L229 (1973)}.
-    \bibitem{Ber84} Michael Berry, Marko Robnik, {\it Semiclassical level spacings when regular and chaotic orbits coexist}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/17/12/013}{Journal of Physics A: Mathematical and General {\bf 17}, 2413 (1984)}.
-    \bibitem{Bro73} Thomas Brody, {\it A statistical measure for the repulsion of energy levels}, \href{https://link.springer.com/article/10.1007/BF02727859}{Lettere al Nuovo Cimento {\bf 7}, 482 (1973)}.
-    \bibitem{Izr89} Felix Izrailev, {\it Intermediate statistics of the quasi-energy spectrum and quantum localisation of classical chaos}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/22/7/017/meta}{Journal of Physics A: Mathematical and General {\bf 22}, 865 (1989)}.
-    \bibitem{Boh75} Oriol Bohigas, Marie-Joya Giannoni, {\it Level Density Fluctuations and Random Matrix Theory}, \href{https://www.sciencedirect.com/science/article/abs/pii/0003491675901876}{Annals of Physics {\bf 89}, 393 (1975)}.
+\printbibliography
 
-    \bibitem{Rei04} Linda E. Reichl, {\it The Transition to Chaos: Conservative Classical Systems and Quantum Manifestations} (Springer, 2004).
-    \bibitem{Sto99} Hans-Jürgen Stöckmann, {\it Quantum Chaos: An Introduction} (Cambridge University Press, 1999).
-    \bibitem{Ozo88} Alfredo M. Ozorio de Almeida, {\it Hamiltonian Systems: Chaos and Quantization} (Cambridge University Press, 1988).
-    \bibitem{Cau90} E. Caurier, Basil Grammaticos, Alfred Ramani, {\it Level repulsion near integrability: a random matrix analogy}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/23/21/029}{Journal of Physics A: Mathematical and General {\bf 23}, 4903 (1990)}.
-    \bibitem{Len91} Georg Lenz, Fritz Haake, {\it Reliability of Small Matrices for Large Spectra with Nonuniversal Fluctuations}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.67.1}{Physical Review Letters {\bf 67}, 1 (1991)}.
-\end{thebibliography}
+% \begin{thebibliography}{99}
+%     \bibitem{Gut90} Martin C. Gutzwiller, {\it Chaos in Classical and Quantum Mechanics} (Springer, 1990).
+%     \bibitem{Haa10} Fritz Haake, {\it Quantum Signatures of Chaos} (Springer, 2010).
+%     \bibitem{Boh89} Oriol Bohigas, {\it Random Matrix Theories and Chaotic Dynamics}, Les Houches LII, ed. M.-J. Gianonni, A. Voros, J. Zinn-Justin, 1989.
+%     \bibitem{Meh04} Madan L. Mehta, {\it Random Matrices} (Elsevier 2004).
+%     \bibitem{Wimberger2023} Sandro Wimberger, {\it Nonlinear Dynamics and Quantum Chaos. An Introduction} (Springer 2023).
+%     \bibitem{Ber89} Michael Berry, {\it Quantum Chaology, Not Quantum Chaos}, \href{https://iopscience.iop.org/article/10.1088/0031-8949/40/3/013}{Physica Scripta {\bf 40}, 335 (1989)}.
+%     \bibitem{Boh84} Oriol Bohigas, Marie-Joya Giannoni, Carles Schmit, {\it Characterization of chaotic quantum spectra and universality of level fluctuation laws}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.52.1
+%     }{Physical Review Letters {\bf 52}, 1 (1984)}.
+%     \bibitem{Cas85} Giulio Casati, Boris V. Chirikov, Italo Guarneri, {\it Energy-Level Statistics of Integrable Quantum Systems}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.54.1350}{Physical Review Letters {\bf 54}, 1350 (1985)}.
+%     \bibitem{Wig51} Eugene Wigner, {\it On the statistical distribution of the widths and spacings of nuclear resonance levels}, Proceedings of the Cambridge Philosophical Society {\bf 47}, 790 (1951).
+%     \bibitem{Wig55} Eugene Wigner, {\it Characteristic vectors of bordered matrices with many dimensions}, \href{https://www.jstor.org/stable/1970079}{Annals of Mathematics {\bf 62}, 548 (1955)}.
+%     \bibitem{Wig57} Eugene Wigner, {\it Statistial properties of real symmetric matrices with infinite dimensions}, Canadian Mathematical Congress Proceedings, p. 174 (University of Toronto Press, 1957).
+%     \bibitem{Sin77} Yakov Grigorevich Sinai, {\it Introduction to Ergodic Theory}, Mathematical Notes (Book 18) (Princeton University Press, 1977).
+%     \bibitem{Wis28} John Wishart, {\it The generalized product moment distribution in samples from a normal multivariate population}, \href{https://academic.oup.com/biomet/article-abstract/20A/1-2/32/204365}{Biometrica A {\bf 20}, 32 (1928)}.
+%     \bibitem{Dys62} Freeman John Dyson, {\it Statistical theory of the energy levels of complex systems I--III}, Journal of Mathematical Physics {\bf 3}, \{\href{https://aip.scitation.org/doi/10.1063/1.1703773}{140}, \href{https://aip.scitation.org/doi/10.1063/1.1703774}{157}, \href{https://aip.scitation.org/doi/10.1063/1.1703775}{166}\} (1962).
+%     \bibitem{Reh16} A. Rehemanjiang, M. Allgaier, C.H. Joyner, S. Müller, M. Sieber, U. Kuhl, Hans-Jürgen Stöckmann, {\it Microwave realization of the Gaussian Symplectic Ensemble}, \href{https://link.aps.org/doi/10.1103/PhysRevLett.117.064101}{Physical Review Letters {\bf 117}, 064101 (2016).}
+%     \bibitem{Alt97} Alexander Altland, Martin R. Zirnbauer, {\it Nonstandard symmetry classes in mesoscopic normal-superconducting hybrid structures}, \href{https://journals.aps.org/prb/abstract/10.1103/PhysRevB.55.1142}{Physical Review B {\bf 55}, 1142 (1997)}.
+%     \bibitem{Gin65} Jean Ginibre, {\it Statistical Ensembles of Comples, Quaternion, and Real Matrices}, \href{https://aip.scitation.org/doi/10.1063/1.1704292}{Journal of Mathematical Physics {\bf 6}, 440 (1965)}.
+%     \bibitem{Kac66} Mark Kac, {\it Can One Hear the Shape of a Drum?} \href{https://www.maa.org/sites/default/files/pdf/upload_library/22/Ford/MarkKac.pdf}{American Mathematical Monthly {\bf 73}, 16 (1966)}.
+%     \bibitem{Per73} Ian Colin Percival, {\it Regular and irregular spectra}, \href{https://iopscience.iop.org/article/10.1088/0022-3700/6/9/002/pdf}{Journal of Physics B: Atomic and Molecular Physics {\bf 6}, L229 (1973)}.
+%     \bibitem{Ber84} Michael Berry, Marko Robnik, {\it Semiclassical level spacings when regular and chaotic orbits coexist}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/17/12/013}{Journal of Physics A: Mathematical and General {\bf 17}, 2413 (1984)}.
+%     \bibitem{Bro73} Thomas Brody, {\it A statistical measure for the repulsion of energy levels}, \href{https://link.springer.com/article/10.1007/BF02727859}{Lettere al Nuovo Cimento {\bf 7}, 482 (1973)}.
+%     \bibitem{Izr89} Felix Izrailev, {\it Intermediate statistics of the quasi-energy spectrum and quantum localisation of classical chaos}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/22/7/017/meta}{Journal of Physics A: Mathematical and General {\bf 22}, 865 (1989)}.
+%     \bibitem{Boh75} Oriol Bohigas, Marie-Joya Giannoni, {\it Level Density Fluctuations and Random Matrix Theory}, \href{https://www.sciencedirect.com/science/article/abs/pii/0003491675901876}{Annals of Physics {\bf 89}, 393 (1975)}.
+
+%     \bibitem{Rei04} Linda E. Reichl, {\it The Transition to Chaos: Conservative Classical Systems and Quantum Manifestations} (Springer, 2004).
+%     \bibitem{Sto99} Hans-Jürgen Stöckmann, {\it Quantum Chaos: An Introduction} (Cambridge University Press, 1999).
+%     \bibitem{Ozo88} Alfredo M. Ozorio de Almeida, {\it Hamiltonian Systems: Chaos and Quantization} (Cambridge University Press, 1988).
+%     \bibitem{Cau90} E. Caurier, Basil Grammaticos, Alfred Ramani, {\it Level repulsion near integrability: a random matrix analogy}, \href{https://iopscience.iop.org/article/10.1088/0305-4470/23/21/029}{Journal of Physics A: Mathematical and General {\bf 23}, 4903 (1990)}.
+%     \bibitem{Len91} Georg Lenz, Fritz Haake, {\it Reliability of Small Matrices for Large Spectra with Nonuniversal Fluctuations}, \href{https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.67.1}{Physical Review Letters {\bf 67}, 1 (1991)}.
+% \end{thebibliography}
 
 \end{document}
