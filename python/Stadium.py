@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from scipy import sparse
 from scipy.sparse import linalg as sla
 
-import statistics, plots
+import rmt_statistics, plots
 
 def schrodinger2D(shape, parameters, Ne, E0=0.0, findpsi=False):
     V, x, y = shape(parameters)
@@ -167,11 +167,11 @@ def demonstrate(size=1000, polynomial_order=7):
 
     plots.level_density(energies, title=title)
 
-    unfolded = statistics.polynomial_unfolding(energies, polynomial_order)
+    unfolded = rmt_statistics.polynomial_unfolding(energies, polynomial_order)
     plots.level_density(unfolded, title=f"Unfolded ({polynomial_order} order polynomial)" + title)
 
-    spacings = statistics.level_spacing(unfolded)
-    plots.nnsd(spacings, statistics.wigner, title=title)
+    spacings = rmt_statistics.level_spacing(unfolded)
+    plots.nnsd(spacings, rmt_statistics.wigner, title=title)
 
 if __name__ == "__main__":
     demonstrate(2000)
