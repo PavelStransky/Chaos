@@ -6,7 +6,7 @@
 
 import numpy as np
 
-import statistics, plots
+import rmt_statistics, plots
 
 def dimensional_parameter(hbar=1, M=1):
     """ Calculates the dimensional parameter (pi hbar)^2 / (2 M))
@@ -68,7 +68,6 @@ def spectrum(num_states, a=1, b=np.sqrt(np.pi / 3), hbar=1, M=1):
     print(f"Maximum energy = {max_energy}, maximum indices = ({maxn}, {maxm})")
 
     spectrum = []
-    print(K)
 
     for n in range(1, maxn):
         for m in range(1, maxm):
@@ -90,13 +89,13 @@ def demonstrate(num_states=100000, a=1, b=np.sqrt(np.pi / 3)):
     energies = spectrum(num_states, a, b)
 
     unfolded = cummulative_level_density(energies, a, b)
-    spacings = statistics.level_spacing(unfolded)
+    spacings = rmt_statistics.level_spacing(unfolded)
 
     title = f"2D box (a, b) = ({a}, {b})"
 
     plots.level_density(energies, lambda x: level_density(x, a, b), title=title)
     plots.cummulative_level_density(energies, lambda x: cummulative_level_density(x, a, b), title=title)
-    plots.nnsd(spacings, statistics.poisson, title=title)
+    plots.nnsd(spacings, rmt_statistics.poisson, title=title)
 
 if __name__ == "__main__":
     demonstrate()
